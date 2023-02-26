@@ -7,7 +7,13 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1> Kichir </h1>
+      <div className={styles.nav}>
+        <Image
+          src='bird.png'
+          width='30' height='30'
+          alt='bird' />
+        <h1> Kichir </h1>
+      </div>
     </main>
   )
 }
