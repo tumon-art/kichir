@@ -1,7 +1,8 @@
 import styles from "./page.module.css";
 import Isloggedin from "./isLoggedIn";
 import { Inter } from "next/font/google";
-import Logo from "./comps/icons";
+import { Logo } from "./comps/Icons";
+import LoginComp from "./comps/LoginComp";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +15,9 @@ export default function Home() {
         <div className={styles.loginHold}>
           <Isloggedin />
         </div>
+      </div>
+      <div className={styles.pageBody}>
+        <LoginComp />
       </div>
     </main>
   );

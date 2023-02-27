@@ -13,6 +13,8 @@
   --primary: #2ec27e;
   --primary-shadow: #5eb38b;
   --text-white: white;
+  --danger: black;
+  --dim: #c7cac7;
   /* --- CUSTOM END */
 
   --primary-glow: conic-gradient(

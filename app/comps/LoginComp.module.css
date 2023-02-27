@@ -1,0 +1,24 @@
+.main {
+  margin: 2em 0 0 0;
+  background-color: var(--primary);
+  padding: 0.3em 2em;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  font-weight: bolder;
+  color: var(--text-white);
+  cursor: pointer;
+  box-shadow: 0 5px 4px 0px var(--dim);
+}
+
+.main:hover {
+  outline: 2px dashed var(--primary-shadow);
+  outline-offset: 3px;
+}
+
+.googleLogo {
+  height: 30px;
+  width: 30px;
+}

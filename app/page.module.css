@@ -1,16 +1,22 @@
 .main {
-  padding: 0 2em;
-  border-bottom: 2px dashed var(--primary);
 }
 .nav {
+  border-bottom: 2px dashed var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2em;
+  padding: 0 2em;
 }
 
 .nav h1 {
   color: var(--primary);
+}
+
+.pageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loginHold {

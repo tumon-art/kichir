@@ -7,11 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Projects {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
-
 model Account {
   id                String  @id @default(cuid())
   userId            String

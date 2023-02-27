@@ -26,3 +26,19 @@
 .customModal {
   padding: 20px;
 }
+
+.askHold {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-top: 2em;
+  font-weight: bolder;
+}
+
+.askHold div:first-of-type {
+  color: var(--danger);
+}
+
+.askHold div {
+  cursor: pointer;
+}

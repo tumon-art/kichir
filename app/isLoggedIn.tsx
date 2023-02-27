@@ -1,7 +1,7 @@
 "use client";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState } from "react";
-import Modal from "./comps/modal";
+import Modal from "./comps/Modal";
 import styles from "./isLoggedIn.module.css";
 
 export default function Isloggedin() {
@@ -25,12 +25,29 @@ export default function Isloggedin() {
           setModel={setisModelOpen}
         >
           <h2> Do want to Logout? </h2>
+          <div className={styles.askHold}>
+            <div
+              onClick={() => {
+                signOut();
+                setisModelOpen(false);
+              }}
+            >
+              Yes
+            </div>
+            <div
+              onClick={() => {
+                setisModelOpen(false);
+              }}
+            >
+              No
+            </div>
+          </div>
         </Modal>
       </>
     );
   } else
     return (
-      <button className={styles.btn} onClick={() => signIn()}>
+      <button className={styles.btn} onClick={() => signIn("google")}>
         Sign in
       </button>
     );
