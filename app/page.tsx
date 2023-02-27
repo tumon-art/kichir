@@ -1,17 +1,19 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "./page.module.css";
-import Isloggedin from "./isloggedin";
+import Isloggedin from "./isLoggedIn";
+import { Inter } from "next/font/google";
+import Logo from "./comps/icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} ${inter.className}`}>
       <div className={styles.nav}>
-        <Image src="/bird.png" width="30" height="30" alt="bird" />
+        <Logo />
         <h1> Kichir </h1>
-        <Isloggedin />
+        <div className={styles.loginHold}>
+          <Isloggedin />
+        </div>
       </div>
     </main>
   );

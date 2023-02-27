@@ -1,0 +1,28 @@
+.btn {
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  color: var(--primary);
+  font-weight: bolder;
+  display: inline;
+  padding: 2px 5px;
+  cursor: pointer;
+  max-width: 90px;
+}
+
+.loggedName {
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  color: var(--primary);
+  font-weight: bolder;
+  display: inline;
+  padding: 2px 5px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+
+.customModal {
+  padding: 20px;
+}

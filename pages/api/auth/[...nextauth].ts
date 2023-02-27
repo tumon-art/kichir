@@ -5,6 +5,9 @@ import prismaClient from "@/lib/prisma";
 
 export default NextAuth({
   adapter: PrismaAdapter(prismaClient),
+  session: {
+      strategy: 'jwt'
+  },
   providers: [
     GoogleProvider({
       clientId: String(process.env.GOOGLE_CLIENT_ID),

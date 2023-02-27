@@ -1,0 +1,27 @@
+.modalMain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+}
+
+.Xdiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: var(--primary-shadow);
+  opacity: 30%;
+  z-index: -1;
+}
+
+.modalBody {
+  background-color: var(--primary-shadow);
+  color: var(--text-white);
+}

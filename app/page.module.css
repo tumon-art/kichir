@@ -1,3 +1,20 @@
-.main h1 {
-    color: blue;
+.main {
+  padding: 0 2em;
+  border-bottom: 2px dashed var(--primary);
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.nav h1 {
+  color: var(--primary);
+}
+
+.loginHold {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
