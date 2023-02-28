@@ -15,6 +15,8 @@
   --text-white: white;
   --danger: black;
   --dim: #c7cac7;
+  --lightDim: #3c3838;
+  --box-shadow: 0 5px 4px 0px var(--dim);
   /* --- CUSTOM END */
 
   --primary-glow: conic-gradient(

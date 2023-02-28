@@ -10,6 +10,7 @@ specifiers:
   eslint-config-next: 13.2.1
   next: 13.2.1
   next-auth: ^4.19.2
+  nodemailer: ^6.9.1
   prisma: ^4.10.1
   react: 18.2.0
   react-dom: 18.2.0
@@ -24,7 +25,8 @@ dependencies:
   eslint: 8.34.0
   eslint-config-next: 13.2.1_7kw3g6rralp5ps6mg3uyzz6azm
   next: 13.2.1_biqbaboplfbrettd7655fr4n2y
-  next-auth: 4.19.2_qgtcjgzkkjtbiyvnx7d32fl5vu
+  next-auth: 4.19.2_klmjkk7frv5rhqq6c6vl6v2ahm
+  nodemailer: 6.9.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
@@ -85,7 +87,7 @@ packages:
       next-auth: ^4
     dependencies:
       '@prisma/client': 4.10.1_prisma@4.10.1
-      next-auth: 4.19.2_qgtcjgzkkjtbiyvnx7d32fl5vu
+      next-auth: 4.19.2_klmjkk7frv5rhqq6c6vl6v2ahm
     dev: false
 
   /@next/env/13.2.1:
@@ -1608,7 +1610,7 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: false
 
-  /next-auth/4.19.2_qgtcjgzkkjtbiyvnx7d32fl5vu:
+  /next-auth/4.19.2_klmjkk7frv5rhqq6c6vl6v2ahm:
     resolution: {integrity: sha512-6V2YG3IJQVhgCAH7mvT3yopTW92gMdUrcwGX7NQ0dCreT/+axGua/JmVdarjec0C/oJukKpIYRgjMlV+L5ZQOQ==}
     peerDependencies:
       next: ^12.2.5 || ^13
@@ -1624,6 +1626,7 @@ packages:
       cookie: 0.5.0
       jose: 4.12.0
       next: 13.2.1_biqbaboplfbrettd7655fr4n2y
+      nodemailer: 6.9.1
       oauth: 0.9.15
       openid-client: 5.4.0
       preact: 10.13.0
@@ -1678,6 +1681,11 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nodemailer/6.9.1:
+    resolution: {integrity: sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==}
+    engines: {node: '>=6.0.0'}
     dev: false
 
   /oauth/0.9.15:
