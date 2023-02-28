@@ -30,7 +30,7 @@ export default function LoginComp() {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           required
-          placeholder="email@email.com"
+          placeholder="email@mail.com"
         />
         <button type="submit">Continue with Email</button>
       </form>

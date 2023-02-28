@@ -6,10 +6,7 @@ import EmailProvider from "next-auth/providers/email";
 
 export default NextAuth({
   adapter: PrismaAdapter(prismaClient),
-  pages: {
-    signIn: "/",
-  },
-  secret: process.env.SECRET,
+  secret: process.env.JWT_SECRET,
   providers: [
     GoogleProvider({
       clientId: String(process.env.GOOGLE_CLIENT_ID),
