@@ -16,6 +16,7 @@
   --danger: black;
   --dim: #c7cac7;
   --lightDim: #3c3838;
+  --btn-back: rgb(224, 224, 224);
   --box-shadow: 0 5px 4px 0px var(--dim);
   /* --- CUSTOM END */
 
@@ -53,8 +54,19 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 20, 40, 40;
+    --background-end-rgb: 0, 20, 20;
+
+    /* --- CUSTOM START */
+    --primary: #187c4d;
+    --primary-shadow: #307454;
+    --text-white: white;
+    --danger: black;
+    --dim: #004119;
+    --lightDim: #e6e4e4;
+    --btn-back: #003a1f;
+    --box-shadow: 0 5px 4px 0px var(--dim);
+    /* --- CUSTOM END */
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(

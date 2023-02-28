@@ -2,13 +2,18 @@
 import { GoogleLogo } from "./Icons";
 import styles from "./LoginComp.module.css";
 import { useSession, signIn } from "next-auth/react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function LoginComp() {
   const { data: session } = useSession();
   const [email, setEmail] = useState<string>("");
 
   if (session) return null;
+
+  const onFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    signIn("email", { email });
+  };
   return (
     <div className={styles.main}>
       <div className={styles.texts}>
@@ -17,7 +22,8 @@ export default function LoginComp() {
           Sign up now to get your own personalized timeline!
         </p>
       </div>
-      <div className={styles.customEmail}>
+
+      <form className={styles.customEmail} onSubmit={onFormSubmit}>
         <input
           type="email"
           autoComplete="email"
@@ -26,10 +32,9 @@ export default function LoginComp() {
           required
           placeholder="email@email.com"
         />
-        <button onClick={() => signIn("email", { email })}>
-          Continue with Email
-        </button>
-      </div>
+        <button type="submit">Continue with Email</button>
+      </form>
+
       <div
         onClick={() => {
           signIn("google");
