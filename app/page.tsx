@@ -4,12 +4,12 @@ import { Inter } from "next/font/google";
 import { Logo } from "./comps/Icons";
 import LoginComp from "./comps/LoginComp";
 import Trends from "./comps/Trends";
-import { Categories, HashTags } from "@prisma/client";
+import prismaClient from "@/lib/prisma";
 
 const inter = Inter({ subsets: ["latin"] });
 
 async function getData() {
-  const tags = await prisma?.hashTags.findMany({
+  const tags = await prismaClient?.hashTags.findMany({
     include: {
       categories: true,
     },
@@ -17,6 +17,7 @@ async function getData() {
   return tags;
 }
 
+prismaClient;
 export default async function Home() {
   const hashTags = await getData();
 
