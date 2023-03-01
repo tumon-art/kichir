@@ -1,0 +1,12 @@
+.span {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.TextDark {
+  color: var(--lightDim);
+}
+
+.span:hover {
+  text-decoration: underline;
+}

@@ -5,6 +5,7 @@ import { Logo } from "./comps/Icons";
 import LoginComp from "./comps/LoginComp";
 import Trends from "./comps/Trends";
 import prismaClient from "@/lib/prisma";
+import Footer from "./comps/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default async function Home() {
       <div className={styles.pageBody}>
         <LoginComp />
         <Trends hashTags={hashTags} />
+        <Footer />
       </div>
     </main>
   );

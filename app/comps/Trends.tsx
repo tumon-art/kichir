@@ -1,5 +1,5 @@
 import { Categories, HashTags } from "@prisma/client";
-import Card from "./Card";
+import Card from "./dls/Card";
 import Container from "./dls/Container";
 import HeaderH2 from "./dls/HeaderH2";
 import { Ellipsis } from "./Icons";

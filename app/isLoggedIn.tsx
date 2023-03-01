@@ -17,7 +17,7 @@ export default function Isloggedin() {
           className={styles.loggedName}
           onClick={() => setisModelOpen(true)}
         >
-          {session.user?.name?.split(" ")[0]}
+          {session.user?.name ? session.user?.name?.split(" ")[0] : "Logout"}
         </button>
         <Modal
           isOpen={isModelOpen}

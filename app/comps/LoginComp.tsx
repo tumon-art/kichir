@@ -4,6 +4,7 @@ import styles from "./LoginComp.module.css";
 import { useSession, signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import Container from "./dls/Container";
+import TextLinkSpan from "./dls/TextLinkSpan";
 
 export default function LoginComp() {
   const { data: session } = useSession();
@@ -47,8 +48,10 @@ export default function LoginComp() {
           <span> Continue with Google </span>
         </div>
         <p className={styles.p2}>
-          By signing up, you agree to the <span>Terms of Service</span> and
-          <span> Privacy Policy</span>, including <span>Cookie</span> Use.
+          By signing up, you agree to the{" "}
+          <TextLinkSpan>Terms of Service</TextLinkSpan> and
+          <TextLinkSpan> Privacy Policy </TextLinkSpan>, including{" "}
+          <TextLinkSpan>Cookie</TextLinkSpan> Use.
         </p>
       </div>
     </Container>

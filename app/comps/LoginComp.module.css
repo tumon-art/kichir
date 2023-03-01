@@ -16,9 +16,7 @@
   font-size: 0.7rem;
   color: var(--lightDim);
 }
-.p2 span {
-  color: var(--primary);
-}
+
 .customEmail {
   justify-content: center;
   display: flex;
