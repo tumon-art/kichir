@@ -15,8 +15,8 @@ export default function Footer() {
     <Container px1em>
       <div className={styles.main}>
         <div className={styles.textHold}>
-          {textarr.map((e: string) => (
-            <span className={styles.span}>
+          {textarr.map((e: string, i) => (
+            <span key={i} className={styles.span}>
               <TextLinkSpan textDark> {e} </TextLinkSpan>
             </span>
           ))}
