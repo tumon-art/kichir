@@ -1,0 +1,9 @@
+.main {
+  width: 100%;
+  max-width: 400px;
+  margin: 3em 0 0 0;
+}
+
+.px1em {
+  padding: 0 1em;
+}

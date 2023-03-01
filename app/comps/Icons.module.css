@@ -1,0 +1,13 @@
+.ellipsis {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 3px;
+  transition: var(--transition-fast);
+}
+
+.ellipsis:hover {
+  background-color: var(--primary);
+  color: var(--text-white);
+  cursor: pointer;
+}

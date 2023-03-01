@@ -3,6 +3,7 @@ import { GoogleLogo } from "./Icons";
 import styles from "./LoginComp.module.css";
 import { useSession, signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
+import Container from "./dls/Container";
 
 export default function LoginComp() {
   const { data: session } = useSession();
@@ -15,39 +16,41 @@ export default function LoginComp() {
     signIn("email", { email });
   };
   return (
-    <div className={styles.main}>
-      <div className={styles.texts}>
-        <h2> New to Kichir? </h2>
-        <p className={styles.p}>
-          Sign up now to get your own personalized timeline!
+    <Container px1em>
+      <div className={styles.main}>
+        <div className={styles.texts}>
+          <h2> New to Kichir? </h2>
+          <p className={styles.p}>
+            Sign up now to get your own personalized timeline!
+          </p>
+        </div>
+
+        <form className={styles.customEmail} onSubmit={onFormSubmit}>
+          <input
+            type="email"
+            autoComplete="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+            placeholder="email@mail.com"
+          />
+          <button type="submit">Continue with Email</button>
+        </form>
+
+        <div
+          onClick={() => {
+            signIn("google");
+          }}
+          className={styles.loginBtn}
+        >
+          <GoogleLogo cssStyles={styles.googleLogo} />
+          <span> Continue with Google </span>
+        </div>
+        <p className={styles.p2}>
+          By signing up, you agree to the <span>Terms of Service</span> and
+          <span> Privacy Policy</span>, including <span>Cookie</span> Use.
         </p>
       </div>
-
-      <form className={styles.customEmail} onSubmit={onFormSubmit}>
-        <input
-          type="email"
-          autoComplete="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          required
-          placeholder="email@mail.com"
-        />
-        <button type="submit">Continue with Email</button>
-      </form>
-
-      <div
-        onClick={() => {
-          signIn("google");
-        }}
-        className={styles.loginBtn}
-      >
-        <GoogleLogo cssStyles={styles.googleLogo} />
-        <span> Continue with Google </span>
-      </div>
-      <p className={styles.p2}>
-        By signing up, you agree to the <span>Terms of Service</span> and
-        <span> Privacy Policy</span>, including <span>Cookie</span> Use.
-      </p>
-    </div>
+    </Container>
   );
 }

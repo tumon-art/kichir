@@ -1,0 +1,10 @@
+.main {
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border-radius: 8px;
+  padding: 0 1em;
+}
+
+.main:hover {
+  background: var(--dim);
+}

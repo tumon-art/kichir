@@ -15,9 +15,11 @@
   --text-white: white;
   --danger: black;
   --dim: #c7cac7;
+  --text-dark: #1e1e1d;
   --lightDim: #3c3838;
   --btn-back: rgb(224, 224, 224);
   --box-shadow: 0 5px 4px 0px var(--dim);
+  --transition-fast: 0.3s;
   /* --- CUSTOM END */
 
   --primary-glow: conic-gradient(
