@@ -53,14 +53,13 @@ model VerificationToken {
 }
 
 model HashTags {
-  id           String     @id @default(cuid())
-  tag          String     @unique
-  categoriesId String
-  categories   Categories @relation(fields: [categoriesId], references: [id])
+  id         String       @id @default(cuid())
+  tag        String       @unique
+  categories Categories[]
 }
 
 model Categories {
   id       String     @id @default(cuid())
   name     String
-  HashTags HashTags[]
+  hashTags HashTags[]
 }

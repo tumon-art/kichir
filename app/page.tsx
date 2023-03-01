@@ -4,20 +4,21 @@ import { Inter } from "next/font/google";
 import { Logo } from "./comps/Icons";
 import LoginComp from "./comps/LoginComp";
 import Trends from "./comps/Trends";
+import { Categories, HashTags } from "@prisma/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
 async function getData() {
-  try {
-    const tags = await prisma?.hashTags.findMany()
-    return tags
-  } catch (err) {
-    return err
-  }
+  const tags = await prisma?.hashTags.findMany({
+    include: {
+      categories: true,
+    },
+  });
+  return tags;
 }
 
 export default async function Home() {
-  const hashTags = await getData()
+  const hashTags = await getData();
 
   return (
     <main className={`${styles.main} ${inter.className}`}>
@@ -30,8 +31,8 @@ export default async function Home() {
       </div>
       <div className={styles.pageBody}>
         <LoginComp />
+        <Trends hashTags={hashTags} />
       </div>
-      <Trends hashTags={hashTags} />
     </main>
   );
 }
