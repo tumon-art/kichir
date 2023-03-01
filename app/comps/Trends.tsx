@@ -22,7 +22,7 @@ export default function Trends({ hashTags }: HashTagType) {
       <div className={styles.tagsHold}>
         {hashTags?.map((hashTag: SingleTag, i) => {
           return (
-            <Card>
+            <Card key={i}>
               <div className={styles.tagContainer}>
                 <div className={styles.tagHold} key={i}>
                   <div className={styles.categor}>
