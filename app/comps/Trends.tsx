@@ -1,4 +1,3 @@
-"use client";
 import { Categories, HashTags } from "@prisma/client";
 import styles from "./Trends.module.css";
 
