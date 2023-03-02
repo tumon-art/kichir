@@ -5,17 +5,19 @@ import { useSession, signIn } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import Container from "./dls/Container";
 import TextLinkSpan from "./dls/TextLinkSpan";
+import AddInfo from "./AddInfo";
 
 export default function LoginComp() {
   const { data: session } = useSession();
   const [email, setEmail] = useState<string>("");
 
-  if (session) return null;
+  if (session) return <AddInfo />;
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     signIn("email", { email });
   };
+
   return (
     <Container px1em>
       <div className={styles.main}>

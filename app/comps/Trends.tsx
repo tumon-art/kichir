@@ -14,7 +14,6 @@ export interface HashTagType {
 }
 
 export default function Trends({ hashTags }: HashTagType) {
-  console.log(hashTags);
 
   return (
     <Container>

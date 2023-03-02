@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 1.3em;
   color: var(--primary);
+  height: 260px;
 }
 
 .texts {
