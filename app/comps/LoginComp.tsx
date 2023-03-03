@@ -11,7 +11,8 @@ export default function LoginComp() {
   const { data: session } = useSession();
   const [email, setEmail] = useState<string>("");
 
-  if (session) return <AddInfo />;
+  // --- Add Info Comp
+  if (session) return <AddInfo session={session} />;
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();

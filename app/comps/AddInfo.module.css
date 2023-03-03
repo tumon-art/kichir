@@ -2,3 +2,38 @@
   color: var(--primary);
   height: 260px;
 }
+
+.customEmail {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 1em 0 0 0;
+}
+
+.customEmail > *:hover {
+  outline: 2px dashed var(--primary-shadow);
+  outline-offset: 3px;
+}
+.customEmail input {
+  padding: 0.6em 0 0.6em 2em;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: var(--dim);
+  width: 100%;
+}
+.customEmail button {
+  padding: 0.3em 0;
+  height: 35px;
+  display: block;
+  border: none;
+  text-align: center;
+  width: 100%;
+  border-radius: 6px;
+  background: var(--primary);
+  color: var(--text-white);
+  font-weight: bolder;
+  cursor: pointer;
+}

@@ -10,7 +10,6 @@ export default function Isloggedin() {
   const { data: session } = useSession();
 
   if (session) {
-    console.log(session);
     return (
       <>
         <button
