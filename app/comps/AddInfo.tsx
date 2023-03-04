@@ -7,10 +7,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { User } from "@prisma/client";
 import { fetcher } from "@/lib/swr/fetcher";
 import useDebounce from "./hooks/useDebounce";
-
-const isObjectEmpty = (objectName: any) => {
-  return Object.keys(objectName).length === 0;
-};
+import { isObjectEmpty } from "@/lib/tools/isObjectEmpty";
 
 const addUnameToDB = () => {
   console.error("truesfdf");
@@ -39,32 +36,37 @@ export default function AddInfo({ session }: { session: Session }) {
   }, [data]);
 
   useEffect(() => {
-    if (debouncedSearchQuery) {
-      console.log(debouncedSearchQuery);
-      const get = async () => {
-        fetch("/api/checkuname", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ uname: debouncedSearchQuery }),
-        })
-          .then((r) => r.json())
-          .then((d) => {
-            isObjectEmpty(d) == false
-              ? setUnameErr("Try another username")
-              : setUnameErr("");
-          });
-      };
-      get();
-    }
+    const lowercaseWordPattern = /^[a-z]+$/;
+    if (lowercaseWordPattern.test(debouncedSearchQuery)) {
+      if (debouncedSearchQuery) {
+        console.log(debouncedSearchQuery);
+        const get = async () => {
+          fetch("/api/checkuname", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ uname: debouncedSearchQuery }),
+          })
+            .then((r) => r.json())
+            .then((d) => {
+              isObjectEmpty(d) == false
+                ? setUnameErr("Try another username")
+                : setUnameErr("");
+            });
+        };
+        get();
+      }
+
+    } else setUnameErr("Enter a lowercase word")
+
   }, [debouncedSearchQuery]);
 
   if (error) return <div>failed to load</div>;
   if (isLoading)
     return (
       <Container px1em>
-        <div style={{ height: "260px", width: "100%", position: "relative" }}>
+        <div className={styles.loadingDiv}>
           <Spinner />
         </div>
       </Container>
@@ -79,6 +81,7 @@ export default function AddInfo({ session }: { session: Session }) {
         <h2> Add some info </h2>
         <form className={styles.customEmail} onSubmit={() => null}>
           <input
+            className={styles.name}
             type="text"
             autoComplete="name"
             onChange={(e) => null}
@@ -86,18 +89,25 @@ export default function AddInfo({ session }: { session: Session }) {
             required
             placeholder="Enter your name"
           />
+          <span> @username </span>
           <input
             type="text"
             autoComplete="text"
+            className={styles.inputUname}
             onChange={(e) => {
+
               if (user) setUser({ ...user, uname: e.target.value });
             }}
             value={user?.uname == null ? "" : user.uname}
             required
-            placeholder="Enter your username"
+            placeholder="Create @username"
           />
           <span> {unameErr} </span>
-          <button style={{ opacity: unameErr ? "20%" : "100%" }} type="submit">
+          <button
+            className={`${unameErr ? styles.btn_opacity_20 : styles.btn_opacity_full
+              }`}
+            type="submit"
+          >
             Submit
           </button>
         </form>

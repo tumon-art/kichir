@@ -11,19 +11,18 @@
   margin: 1em 0 0 0;
 }
 
-.customEmail > *:hover {
-  outline: 2px dashed var(--primary-shadow);
-  outline-offset: 3px;
-}
-.customEmail input {
+.inputUname, .name {
   padding: 0.6em 0 0.6em 2em;
   font-size: 0.9rem;
   border-radius: 6px;
   border: none;
-  outline: none;
-  background: var(--dim);
   width: 100%;
+  background: var(--dim);
+  outline: 2px dashed red;
+  outline-offset: 3px;
+  outline: 2px dashed var(--primary);
 }
+
 .customEmail button {
   padding: 0.3em 0;
   height: 35px;
@@ -36,4 +35,18 @@
   color: var(--text-white);
   font-weight: bolder;
   cursor: pointer;
+}
+
+.loadingDiv {
+  height: 260px;
+  width: 100%;
+  position: relative;
+}
+
+.btn_opacity_full {
+  opacity: 100%;
+}
+
+.btn_opacity_20 {
+  opacity: 20%;
 }
