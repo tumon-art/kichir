@@ -11,14 +11,12 @@ import { useState, useEffect } from "react";
  * @returns {T}
  */
 const useDebounce = <T>(value: T, delay: number): T => {
-  console.log("useDebounce");
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
   useEffect(
     () => {
       // Update debounced value only after the delay period has elapsed.
       const handler = setTimeout(() => {
-        console.log("handler");
         setDebouncedValue(value);
       }, delay);
       // Cancel the timeout if value or delay period change or if unmount happens.

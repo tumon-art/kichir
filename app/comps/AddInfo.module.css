@@ -23,6 +23,11 @@
   outline: 2px dashed var(--primary);
 }
 
+.spanErr {
+  color: red;
+  font-size: 0.8rem;
+}
+
 .customEmail button {
   padding: 0.3em 0;
   height: 35px;

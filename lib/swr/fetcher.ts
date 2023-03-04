@@ -1,7 +1,7 @@
 /***
  * swr fetcher POST req funtion
- * @param {string} url takes url
- * @param {any} data take request body
+ * @param url takes url
+ * @param data take request body
  *
  */
 

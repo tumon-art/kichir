@@ -15,7 +15,6 @@ export default function Modal({
 }: ModalProps) {
   if (!isOpen) return null;
 
-  console.log(isOpen);
   return (
     <section className={styles.modalMain}>
       <div onClick={() => setModel(false)} className={styles.Xdiv}></div>

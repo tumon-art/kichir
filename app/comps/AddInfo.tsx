@@ -9,37 +9,34 @@ import { fetcher } from "@/lib/swr/fetcher";
 import useDebounce from "./hooks/useDebounce";
 import { isObjectEmpty } from "@/lib/tools/isObjectEmpty";
 
-const addUnameToDB = () => {
-  console.error("truesfdf");
-};
 // POST REQ
 export default function AddInfo({ session }: { session: Session }) {
-  const [user, setUser] = useState<User | null>();
-  const [unameErr, setUnameErr] = useState<string>("");
+  const [user, setUser] = useState<User>();
+  const [unameErr, setUnameErr] = useState<{ errText: string; ok: boolean }>({
+    errText: "",
+    ok: false,
+  });
 
-  const DEBOUNCING_PERIOD_MS = 2000;
+  // DEBOUNCING
+  const DEBOUNCING_PERIOD_MS = 1000;
   const debouncedSearchQuery = useDebounce<any>(
     user?.uname,
     DEBOUNCING_PERIOD_MS
   );
 
-  const { data, error, isLoading } = useSWR("/api/userinfo", () =>
-    fetcher("/api/userinfo", {
+  const { data, error, isLoading } = useSWR("/api/userinfo", () => {
+    const res = fetcher("/api/userinfo", {
       email: session.user?.email,
     })
-  );
+      .then((r) => setUser(r))
+      .catch((err) => console.log(err));
+  });
 
-  useEffect(() => {
-    if (data) {
-      setUser(data);
-    }
-  }, [data]);
-
+  // Handle @username
   useEffect(() => {
     const lowercaseWordPattern = /^[a-z]+$/;
     if (lowercaseWordPattern.test(debouncedSearchQuery)) {
       if (debouncedSearchQuery) {
-        console.log(debouncedSearchQuery);
         const get = async () => {
           fetch("/api/checkuname", {
             method: "POST",
@@ -51,15 +48,13 @@ export default function AddInfo({ session }: { session: Session }) {
             .then((r) => r.json())
             .then((d) => {
               isObjectEmpty(d) == false
-                ? setUnameErr("Try another username")
-                : setUnameErr("");
+                ? setUnameErr({ errText: "Try another username", ok: false })
+                : setUnameErr({ errText: "", ok: true });
             });
         };
         get();
       }
-
-    } else setUnameErr("Enter a lowercase word")
-
+    } else setUnameErr({ errText: "Enter a lowercase word", ok: false });
   }, [debouncedSearchQuery]);
 
   if (error) return <div>failed to load</div>;
@@ -72,14 +67,20 @@ export default function AddInfo({ session }: { session: Session }) {
       </Container>
     );
 
-  console.log("render");
   // const unameHadler = (e: FormEvent) => { setUser({...user, uname: "sdfsf"})};
+
+  const onFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
     <Container px1em>
       <div className={styles.main}>
         <h2> Add some info </h2>
-        <form className={styles.customEmail} onSubmit={() => null}>
+        <form
+          className={styles.customEmail}
+          onSubmit={(e) => unameErr.ok && onFormSubmit(e)}
+        >
           <input
             className={styles.name}
             type="text"
@@ -95,17 +96,17 @@ export default function AddInfo({ session }: { session: Session }) {
             autoComplete="text"
             className={styles.inputUname}
             onChange={(e) => {
-
               if (user) setUser({ ...user, uname: e.target.value });
             }}
             value={user?.uname == null ? "" : user.uname}
             required
             placeholder="Create @username"
           />
-          <span> {unameErr} </span>
+          <span className={styles.spanErr}> {unameErr.errText} </span>
           <button
-            className={`${unameErr ? styles.btn_opacity_20 : styles.btn_opacity_full
-              }`}
+            className={`${
+              unameErr.ok ? styles.btn_opacity_full : styles.btn_opacity_20
+            }`}
             type="submit"
           >
             Submit
