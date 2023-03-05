@@ -8,11 +8,17 @@ import { User } from "@prisma/client";
 import { fetcher } from "@/lib/swr/fetcher";
 import useDebounce from "./hooks/useDebounce";
 import { isObjectEmpty } from "@/lib/tools/isObjectEmpty";
+import { redirect } from "next/navigation";
 
 // POST REQ
 export default function AddInfo({ session }: { session: Session }) {
   const [user, setUser] = useState<User>();
-  const [unameErr, setUnameErr] = useState<{ errText: string; ok: boolean }>({
+  const [link, setLink] = useState<string>()
+  const [unameErr, setUnameErr] = useState<{
+    errText: string;
+    ok: boolean;
+    okUname?: string;
+  }>({
     errText: "",
     ok: false,
   });
@@ -28,9 +34,16 @@ export default function AddInfo({ session }: { session: Session }) {
     fetcher("/api/userinfo", {
       email: session.user?.email,
     })
-      .then((r) => setUser(r))
+      .then((r: User) => {
+        setUser(r)
+        if(r.name && r.uname)  setLink("/home")
+      })
       .catch((err) => console.log(err))
   );
+
+  if(link) redirect(link)
+
+  // TODO create a func
 
   // Handle @username
   useEffect(() => {
@@ -49,7 +62,11 @@ export default function AddInfo({ session }: { session: Session }) {
             .then((d) => {
               isObjectEmpty(d) == false
                 ? setUnameErr({ errText: "Try another username", ok: false })
-                : setUnameErr({ errText: "available!", ok: true });
+                : setUnameErr({
+                  errText: "available!",
+                  ok: true,
+                  okUname: debouncedSearchQuery,
+                });
             });
         };
         get();
@@ -71,7 +88,22 @@ export default function AddInfo({ session }: { session: Session }) {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form Submit");
+    console.log("Form Submit", unameErr.okUname);
+    unameErr.okUname?.length !== null &&
+      fetch("/api/userinfo", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: user?.email,
+          name: user?.name,
+          uname: unameErr.okUname,
+        }),
+      })
+        .then((r) => r.json())
+        .then((d) => setLink('/home') )
+        .catch((err) => console.log(err));
   };
 
   return (
@@ -91,7 +123,9 @@ export default function AddInfo({ session }: { session: Session }) {
               className={styles.name}
               type="text"
               autoComplete="name"
-              onChange={(e) => null}
+              onChange={(e) => {
+                if (user) setUser({ ...user, name: e.target.value });
+              }}
               value={user?.name == null ? "" : user.name}
               required
               placeholder="Enter your name"
@@ -125,9 +159,8 @@ export default function AddInfo({ session }: { session: Session }) {
           </span>
 
           <button
-            className={`${
-              unameErr.ok ? styles.btn_opacity_full : styles.btn_opacity_20
-            }`}
+            className={`${unameErr.ok ? styles.btn_opacity_full : styles.btn_opacity_20
+              }`}
             type="submit"
           >
             Submit

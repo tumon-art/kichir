@@ -7,7 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const data = await prismaClient.user.findMany({
         where: {
-          name: req.body.uname,
+          uname: req.body.uname,
         },
       });
 
