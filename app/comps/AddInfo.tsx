@@ -13,7 +13,7 @@ import { redirect } from "next/navigation";
 // POST REQ
 export default function AddInfo({ session }: { session: Session }) {
   const [user, setUser] = useState<User>();
-  const [link, setLink] = useState<string>()
+  const [link, setLink] = useState<string>();
   const [unameErr, setUnameErr] = useState<{
     errText: string;
     ok: boolean;
@@ -23,6 +23,19 @@ export default function AddInfo({ session }: { session: Session }) {
     ok: false,
   });
 
+  const { data, error, isLoading } = useSWR("/api/userinfo", () =>
+    fetcher("/api/userinfo", {
+      email: session.user?.email,
+    })
+      .then((r: User) => {
+        if (r.name && r.uname) setLink("/home");
+        setUser(r);
+      })
+      .catch((err) => console.log(err))
+  );
+
+  if (link) redirect(link);
+
   // DEBOUNCING
   const DEBOUNCING_PERIOD_MS = 1000;
   const debouncedSearchQuery = useDebounce<any>(
@@ -30,23 +43,9 @@ export default function AddInfo({ session }: { session: Session }) {
     DEBOUNCING_PERIOD_MS
   );
 
-  const { data, error, isLoading } = useSWR("/api/userinfo", () =>
-    fetcher("/api/userinfo", {
-      email: session.user?.email,
-    })
-      .then((r: User) => {
-        setUser(r)
-        if(r.name && r.uname)  setLink("/home")
-      })
-      .catch((err) => console.log(err))
-  );
-
-  if(link) redirect(link)
-
-  // TODO create a func
-
   // Handle @username
   useEffect(() => {
+    console.log("useEffect");
     const lowercaseWordPattern = /^[a-z]+$/;
     if (lowercaseWordPattern.test(debouncedSearchQuery)) {
       if (debouncedSearchQuery) {
@@ -63,10 +62,10 @@ export default function AddInfo({ session }: { session: Session }) {
               isObjectEmpty(d) == false
                 ? setUnameErr({ errText: "Try another username", ok: false })
                 : setUnameErr({
-                  errText: "available!",
-                  ok: true,
-                  okUname: debouncedSearchQuery,
-                });
+                    errText: "available!",
+                    ok: true,
+                    okUname: debouncedSearchQuery,
+                  });
             });
         };
         get();
@@ -88,7 +87,6 @@ export default function AddInfo({ session }: { session: Session }) {
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form Submit", unameErr.okUname);
     unameErr.okUname?.length !== null &&
       fetch("/api/userinfo", {
         method: "PUT",
@@ -102,10 +100,11 @@ export default function AddInfo({ session }: { session: Session }) {
         }),
       })
         .then((r) => r.json())
-        .then((d) => setLink('/home') )
+        .then((d) => setLink("/home"))
         .catch((err) => console.log(err));
   };
 
+  console.log("render Add Info");
   return (
     <Container px1em>
       <div className={styles.main}>
@@ -159,8 +158,9 @@ export default function AddInfo({ session }: { session: Session }) {
           </span>
 
           <button
-            className={`${unameErr.ok ? styles.btn_opacity_full : styles.btn_opacity_20
-              }`}
+            className={`${
+              unameErr.ok ? styles.btn_opacity_full : styles.btn_opacity_20
+            }`}
             type="submit"
           >
             Submit
