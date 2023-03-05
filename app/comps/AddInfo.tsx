@@ -24,13 +24,13 @@ export default function AddInfo({ session }: { session: Session }) {
     DEBOUNCING_PERIOD_MS
   );
 
-  const { data, error, isLoading } = useSWR("/api/userinfo", () => {
-    const res = fetcher("/api/userinfo", {
+  const { data, error, isLoading } = useSWR("/api/userinfo", () =>
+    fetcher("/api/userinfo", {
       email: session.user?.email,
     })
       .then((r) => setUser(r))
-      .catch((err) => console.log(err));
-  });
+      .catch((err) => console.log(err))
+  );
 
   // Handle @username
   useEffect(() => {
@@ -49,12 +49,14 @@ export default function AddInfo({ session }: { session: Session }) {
             .then((d) => {
               isObjectEmpty(d) == false
                 ? setUnameErr({ errText: "Try another username", ok: false })
-                : setUnameErr({ errText: "", ok: true });
+                : setUnameErr({ errText: "available!", ok: true });
             });
         };
         get();
       }
-    } else setUnameErr({ errText: "Enter a lowercase word", ok: false });
+    } else {
+      setUnameErr({ errText: "Enter a lowercase word", ok: false });
+    }
   }, [debouncedSearchQuery]);
 
   if (error) return <div>failed to load</div>;
@@ -67,10 +69,9 @@ export default function AddInfo({ session }: { session: Session }) {
       </Container>
     );
 
-  // const unameHadler = (e: FormEvent) => { setUser({...user, uname: "sdfsf"})};
-
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
+    console.log("Form Submit");
   };
 
   return (
@@ -79,30 +80,50 @@ export default function AddInfo({ session }: { session: Session }) {
         <h2> Add some info </h2>
         <form
           className={styles.customEmail}
-          onSubmit={(e) => unameErr.ok && onFormSubmit(e)}
+          onSubmit={(e) => {
+            e.preventDefault();
+            unameErr.ok && onFormSubmit(e);
+          }}
         >
-          <input
-            className={styles.name}
-            type="text"
-            autoComplete="name"
-            onChange={(e) => null}
-            value={user?.name == null ? "" : user.name}
-            required
-            placeholder="Enter your name"
-          />
-          <span> @username </span>
-          <input
-            type="text"
-            autoComplete="text"
-            className={styles.inputUname}
-            onChange={(e) => {
-              if (user) setUser({ ...user, uname: e.target.value });
-            }}
-            value={user?.uname == null ? "" : user.uname}
-            required
-            placeholder="Create @username"
-          />
-          <span className={styles.spanErr}> {unameErr.errText} </span>
+          <fieldset>
+            <legend> Full Name </legend>
+            <input
+              className={styles.name}
+              type="text"
+              autoComplete="name"
+              onChange={(e) => null}
+              value={user?.name == null ? "" : user.name}
+              required
+              placeholder="Enter your name"
+            />
+          </fieldset>
+
+          <fieldset>
+            <legend> User Name </legend>
+            <input
+              type="text"
+              autoComplete="text"
+              className={styles.inputUname}
+              onChange={(e) => {
+                if (user) setUser({ ...user, uname: e.target.value });
+              }}
+              value={user?.uname == null ? "" : user.uname}
+              required
+              pattern="[a-z]+"
+              placeholder="Create @username"
+              onInvalid={(e) => {
+                setUnameErr({ errText: "Enter a lowercase word", ok: false });
+                (e.target as HTMLInputElement).setCustomValidity(
+                  "Enter a lowercase word"
+                );
+              }}
+            />
+          </fieldset>
+
+          <span className={unameErr.ok ? styles.spanNoErr : styles.spanErr}>
+            {user?.uname == null ? "" : unameErr.errText}
+          </span>
+
           <button
             className={`${
               unameErr.ok ? styles.btn_opacity_full : styles.btn_opacity_20
