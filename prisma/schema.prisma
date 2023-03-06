@@ -42,6 +42,7 @@ model User {
   uname         String?   @unique
   accounts      Account[]
   sessions      Session[]
+  kichirs       Kichir[]
 }
 
 model VerificationToken {
@@ -58,8 +59,20 @@ model HashTags {
   categories Categories[]
 }
 
+model Kichir {
+  id         Int          @id @default(autoincrement())
+  createdAt  DateTime     @default(now())
+  body       String
+  likes      Int
+  author     User         @relation(fields: [authorId], references: [id])
+  authorId   String
+  Categories Categories[]
+}
+
 model Categories {
   id       String     @id @default(cuid())
   name     String
   hashTags HashTags[]
+  Kichir   Kichir?    @relation(fields: [kichirId], references: [id])
+  kichirId Int?
 }

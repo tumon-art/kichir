@@ -1,7 +1,6 @@
 import styles from "./page.module.css";
 import { Inter } from "next/font/google";
 import prismaClient from "@/lib/prisma";
-import Navbar from "../navbar";
 import LoginComp from "../comps/LoginComp";
 import Trends from "../comps/Trends";
 import Footer from "../comps/Footer";
@@ -22,7 +21,6 @@ export default async function Home() {
 
   return (
     <main className={`${styles.main} ${inter.className}`}>
-      <Navbar />
       <div className={styles.pageBody}>
         <LoginComp />
         <Trends hashTags={hashTags} />
