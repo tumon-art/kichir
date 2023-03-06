@@ -12,7 +12,7 @@ export default function LoginComp() {
   const [email, setEmail] = useState<string>("");
 
   // --- Add Info Comp
-  // if (session) return <AddInfo session={session} />;
+  if (session) return <AddInfo session={session} />;
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();

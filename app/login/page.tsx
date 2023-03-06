@@ -1,10 +1,10 @@
 import styles from "./page.module.css";
 import { Inter } from "next/font/google";
-import LoginComp from "./comps/LoginComp";
-import Trends from "./comps/Trends";
 import prismaClient from "@/lib/prisma";
-import Footer from "./comps/Footer";
-import Navbar from "./navbar";
+import Navbar from "../navbar";
+import LoginComp from "../comps/LoginComp";
+import Trends from "../comps/Trends";
+import Footer from "../comps/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +22,12 @@ export default async function Home() {
 
   return (
     <main className={`${styles.main} ${inter.className}`}>
-      {/* <Navbar />
+      <Navbar />
       <div className={styles.pageBody}>
         <LoginComp />
         <Trends hashTags={hashTags} />
         <Footer />
-      </div> */}
-      <h1> Home Page </h1>
+      </div>
     </main>
   );
 }

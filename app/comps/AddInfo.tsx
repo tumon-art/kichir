@@ -28,7 +28,7 @@ export default function AddInfo({ session }: { session: Session }) {
       email: session.user?.email,
     })
       .then((r: User) => {
-        if (r.name && r.uname) setLink("/home");
+        if (r.name && r.uname) setLink("/");
         setUser(r);
       })
       .catch((err) => console.log(err))

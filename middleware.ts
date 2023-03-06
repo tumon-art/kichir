@@ -14,5 +14,5 @@ export default withAuth(middleware, {
 });
 
 export const config = {
-  matcher: ["/home"],
+  matcher: ["/"],
 };
