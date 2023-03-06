@@ -14,9 +14,8 @@ export interface HashTagType {
 }
 
 export default function Trends({ hashTags }: HashTagType) {
-
   return (
-    <Container>
+    <Container mt3em>
       <HeaderH2> Trends for world </HeaderH2>
       <div className={styles.tagsHold}>
         {hashTags?.map((hashTag: SingleTag, i) => {

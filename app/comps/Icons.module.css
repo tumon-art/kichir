@@ -11,3 +11,15 @@
   color: var(--text-white);
   cursor: pointer;
 }
+
+.feather {
+}
+.feather_1 {
+  fill: var(--dim);
+}
+.feather_2 {
+  fill: var(--primary);
+}
+.feather_3 {
+  fill: var(--primary1);
+}

@@ -5,6 +5,8 @@ import Trends from "./comps/Trends";
 import prismaClient from "@/lib/prisma";
 import Footer from "./comps/Footer";
 import Navbar from "./navbar";
+import { Feather } from "./comps/Icons";
+import PostKichir from "./comps/PostKichir";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +23,7 @@ export default async function Home() {
   const hashTags = await getData();
 
   return (
-    <main className={`${styles.main} ${inter.className}`}>
+    <main className={styles.pageBody}>
       {/* <Navbar />
       <div className={styles.pageBody}>
         <LoginComp />
@@ -29,6 +31,10 @@ export default async function Home() {
         <Footer />
       </div> */}
       <h1> Home Page </h1>
+      <PostKichir />
+      <div className={styles.featherHold}>
+        <Feather cssStyles={styles.feather} />
+      </div>
     </main>
   );
 }

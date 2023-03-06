@@ -46,7 +46,7 @@ export default function Isloggedin() {
     );
   } else
     return (
-      <button className={styles.btn} onClick={() => signIn()}>
+      <button className={styles.btn} onClick={() => signIn("google")}>
         Sign in
       </button>
     );

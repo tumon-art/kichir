@@ -1,7 +1,10 @@
-// import Footer from "./comps/Footer";
+import { Inter } from "next/font/google";
+import Footer from "./comps/Footer";
 import "./globals.css";
 import Navbar from "./navbar";
 import Provider from "./provider";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Kichir",
@@ -15,11 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <Provider>
           <Navbar />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </Provider>
       </body>
     </html>

@@ -12,17 +12,19 @@ const textarr = [
 ];
 export default function Footer() {
   return (
-    <Container px1em>
-      <div className={styles.main}>
-        <div className={styles.textHold}>
-          {textarr.map((e: string, i) => (
-            <span key={i} className={styles.span}>
-              <TextLinkSpan textDark> {e} </TextLinkSpan>
-            </span>
-          ))}
+    <main className={styles.main}>
+      <Container px1em mt3em>
+        <div className={styles.main}>
+          <div className={styles.textHold}>
+            {textarr.map((e: string, i) => (
+              <span key={i} className={styles.span}>
+                <TextLinkSpan textDark> {e} </TextLinkSpan>
+              </span>
+            ))}
+          </div>
+          <span className={styles.span2}> © 2023 Kichir, Inc. </span>
         </div>
-        <span className={styles.span2}> © 2023 Kichir, Inc. </span>
-      </div>
-    </Container>
+      </Container>
+    </main>
   );
 }

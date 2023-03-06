@@ -78,7 +78,7 @@ export default function AddInfo({ session }: { session: Session }) {
   if (error) return <div>failed to load</div>;
   if (isLoading)
     return (
-      <Container px1em>
+      <Container px1em mt3em>
         <div className={styles.loadingDiv}>
           <Spinner />
         </div>
@@ -106,7 +106,7 @@ export default function AddInfo({ session }: { session: Session }) {
 
   console.log("render Add Info");
   return (
-    <Container px1em>
+    <Container px1em mt3em>
       <div className={styles.main}>
         <h2> Add some info </h2>
         <form

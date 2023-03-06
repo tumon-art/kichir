@@ -20,7 +20,7 @@ export default function LoginComp() {
   };
 
   return (
-    <Container px1em>
+    <Container px1em mt3em>
       <div className={styles.main}>
         <div className={styles.texts}>
           <h2> New to Kichir? </h2>

@@ -22,6 +22,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 90px;
+  background: var(--btn-back);
 }
 
 .customModal {

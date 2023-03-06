@@ -1,5 +1,4 @@
 import { NextRequestWithAuth, withAuth } from "next-auth/middleware";
-import { NextResponse } from "next/server";
 
 const middleware = async (request: NextRequestWithAuth) => {
   console.log(request.nextauth.token);
