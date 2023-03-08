@@ -8,7 +8,7 @@
 
 .ellipsis:hover {
   background-color: var(--primary);
-  color: var(--text-white);
+  color: var(--text-secondary);
   cursor: pointer;
 }
 
@@ -22,4 +22,8 @@
 }
 .feather_3 {
   fill: var(--primary1);
+}
+
+.EmojiPaths {
+  stroke: var(--primary);
 }

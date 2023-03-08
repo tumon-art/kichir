@@ -54,7 +54,7 @@
   width: 100%;
   border-radius: 6px;
   background: var(--primary);
-  color: var(--text-white);
+  color: var(--text-secondary);
   font-weight: bolder;
   cursor: pointer;
 }

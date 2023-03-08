@@ -104,3 +104,46 @@ export function Feather({ cssStyles }: { cssStyles?: string }) {
     </svg>
   );
 }
+
+export function Emoji({ cssStyles }: { cssStyles?: string }) {
+  return (
+    <svg className={cssStyles} viewBox="0 0 24.00 24.00" fill="none">
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          opacity="0.1"
+          d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+          className={styles.EmojiPaths}
+        ></path>
+        <path
+          d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+          className={styles.EmojiPaths}
+          strokeWidth="2"
+        ></path>
+        <path
+          d="M8 14C8.91221 15.2144 10.3645 16 12.0004 16C13.6362 16 15.0885 15.2144 16.0007 14"
+          className={styles.EmojiPaths}
+          strokeWidth="2"
+          strokeLinecap="round"
+        ></path>
+        <path
+          d="M9 10.0112V10"
+          className={styles.EmojiPaths}
+          strokeWidth="2"
+          strokeLinecap="round"
+        ></path>
+        <path
+          d="M15 10.0112V10"
+          className={styles.EmojiPaths}
+          strokeWidth="2"
+          strokeLinecap="round"
+        ></path>
+      </g>
+    </svg>
+  );
+}

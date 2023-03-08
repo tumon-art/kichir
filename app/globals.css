@@ -13,10 +13,11 @@
   --primary: #2ec27e;
   --primary1: #00e177;
   --primary-shadow: #5eb38b;
+  --text-primary: #1e1e1d;
   --text-white: white;
+  --text-secondary: white;
   --danger: black;
   --dim: #c7cac7;
-  --text-dark: #1e1e1d;
   --lightDim: #3c3838;
   --btn-back: #e0e0e0;
   --box-shadow: 0 5px 4px 0px var(--dim);
@@ -61,10 +62,10 @@
     --background-end-rgb: 0, 20, 20;
 
     /* --- CUSTOM START */
-    --primary: #187c4d;
+    --primary: #4edd9b;
     --primary-shadow: #307454;
-    --text-white: white;
-    --text-dark: #ffffff;
+    --text-secondary: white;
+    --text-primary: #ffffff;
     --danger: black;
     --dim: #004119;
     --lightDim: #a1a0a0;
