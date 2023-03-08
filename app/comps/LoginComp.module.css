@@ -60,7 +60,7 @@
   justify-content: center;
   align-items: center;
   font-weight: bolder;
-  color: var(--text-secondaryt);
+  color: var(--text-secondary);
   cursor: pointer;
   box-shadow: var(--box-shadow);
   border-radius: 6px;
