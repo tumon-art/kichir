@@ -17,7 +17,7 @@ export default async function Home() {
 
   return (
     <main className={styles.pageBody}>
-      <Container mt3em>
+      <Container>
         <PostKichir />
         <div className={styles.featherHold}>
           <Feather cssStyles={styles.feather} />

@@ -1,13 +1,14 @@
 "use client";
-import { url } from "inspector";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useState } from "react";
 import Container from "./dls/Container";
 import { Emoji } from "./Icons";
 import styles from "./PostKichir.module.css";
 
 export default function PostKichir() {
   const { data: session } = useSession();
+  const [text, setText] = useState<String>("");
 
   return (
     <Container>
@@ -26,18 +27,28 @@ export default function PostKichir() {
           />
         </div>
         <div className={styles.sect2}>
-          <textarea
-            className={styles.textArea}
-            placeholder={`What's going on?`}
-            contentEditable
-          ></textarea>
-          {/* --- Sect2 Footer */}
-          <div className={styles.footerHold}>
-            <div>
-              <Emoji cssStyles={styles.emojiSvg} />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              console.log(session);
+            }}
+          >
+            <textarea
+              maxLength={10}
+              className={styles.textArea}
+              placeholder={`What's going on?`}
+              value={String(text)}
+              onChange={(e) => setText(e.target.value)}
+              required
+            ></textarea>
+            {/* --- Sect2 Footer */}
+            <div className={styles.footerHold}>
+              <div>
+                <Emoji cssStyles={styles.emojiSvg} />
+              </div>
+              <button type="submit"> Kichir </button>
             </div>
-            <button> Kichir </button>
-          </div>
+          </form>
         </div>
       </div>
     </Container>

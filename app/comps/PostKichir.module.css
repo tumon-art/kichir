@@ -4,8 +4,11 @@
   grid-template-rows: auto;
   grid-template-areas: "sect1 sect2 sect2 sect2 sect2";
   min-height: 100px;
-  outline: 1px dashed var(--primary);
   padding: 0.3em 0.3em 0 0.3em;
+  border: 2px var(--primary);
+  border-right-style: dashed;
+  border-bottom-style: dashed;
+  border-left-style: dashed;
 }
 
 .sect1 {
@@ -38,6 +41,10 @@
   border-bottom: 1px solid var(--dim);
 }
 
+.textArea:valid + .footerHold button {
+  opacity: 100%;
+}
+
 .textArea::placeholder {
   padding-left: 4px;
 }
@@ -58,6 +65,7 @@
   padding: 0.3em 1em;
   font-weight: 500;
   cursor: pointer;
+  opacity: 50%;
 }
 
 .emojiSvg {
