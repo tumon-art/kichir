@@ -43,7 +43,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   kichirs       Kichir[]  @relation("kichir")
-  loves         Kichir[]  @relation("love")
+  loves         Kichir[]
 }
 
 model VerificationToken {
@@ -66,8 +66,7 @@ model Kichir {
   body       String
   author     User         @relation("kichir", fields: [authorId], references: [id])
   authorId   String
-  lovedBy    User?        @relation("love", fields: [lovedById], references: [id])
-  lovedById  String?
+  loves      User[]
   Categories Categories[]
 }
 

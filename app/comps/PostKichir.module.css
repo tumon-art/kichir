@@ -30,7 +30,7 @@
 
 .textArea {
   width: 100%;
-  height: 100px;
+  height: 60px;
   resize: none;
   outline: none;
   display: block;
@@ -38,10 +38,10 @@
   background: none;
   font-size: 1.2rem;
   border: none;
-  border-bottom: 1px solid var(--dim);
+  transition: var(--transition-fast);
 }
 
-.textArea:valid + .footerHold button {
+.textArea:valid ~ .footerHold button {
   opacity: 100%;
 }
 
@@ -49,6 +49,31 @@
   padding-left: 4px;
 }
 
+.textArea:focus {
+  height: 100px;
+}
+
+.textArea:focus + .spanText {
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+}
+
+.spanText {
+  display: none;
+  font-weight: 600;
+  border-bottom: 1px solid var(--dim);
+  color: var(--primary);
+  padding: 0 0 0.1em 0;
+}
+
+.globeSvg {
+  height: 16px;
+  width: auto;
+  stroke: 3;
+  stroke-width: 2px;
+  fill: var(--primary);
+}
 .footerHold {
   display: flex;
   justify-content: space-between;

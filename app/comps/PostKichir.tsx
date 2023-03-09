@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 import Container from "./dls/Container";
-import { Emoji } from "./Icons";
+import { Emoji, Globe } from "./Icons";
 import styles from "./PostKichir.module.css";
 
 export default function PostKichir() {
@@ -30,17 +30,29 @@ export default function PostKichir() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(session);
+              fetch("/api/kichir", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ kichir: text }),
+              })
+                .then((r) => console.log(r))
+                .catch((err) => console.log(err));
+              setText("");
             }}
           >
             <textarea
-              maxLength={10}
+              maxLength={50}
               className={styles.textArea}
               placeholder={`What's going on?`}
               value={String(text)}
               onChange={(e) => setText(e.target.value)}
               required
             ></textarea>
+            <span className={styles.spanText}>
+              <Globe cssStyles={styles.globeSvg} /> Everyone can see
+            </span>
             {/* --- Sect2 Footer */}
             <div className={styles.footerHold}>
               <div>
