@@ -5,7 +5,7 @@
  *
  */
 
-export const fetcher = (url: string, data: any) =>
+export const fetcherPOST = (url: string, data: any) =>
   fetch(url, {
     method: "POST",
     headers: {

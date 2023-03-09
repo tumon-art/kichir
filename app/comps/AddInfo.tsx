@@ -5,7 +5,7 @@ import Spinner from "./dls/Spinner";
 import useSWR from "swr";
 import { FormEvent, useEffect, useState } from "react";
 import { User } from "@prisma/client";
-import { fetcher } from "@/lib/swr/fetcher";
+import { fetcherPOST } from "@/lib/swr/fetcherPOST";
 import useDebounce from "./hooks/useDebounce";
 import { isObjectEmpty } from "@/lib/tools/isObjectEmpty";
 import { redirect } from "next/navigation";
@@ -24,7 +24,7 @@ export default function AddInfo({ session }: { session: Session }) {
   });
 
   const { data, error, isLoading } = useSWR("/api/userinfo", () =>
-    fetcher("/api/userinfo", {
+    fetcherPOST("/api/userinfo", {
       email: session.user?.email,
     })
       .then((r: User) => {

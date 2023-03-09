@@ -108,6 +108,7 @@ export function Feather({ cssStyles }: { cssStyles?: string }) {
 export function Emoji({ cssStyles }: { cssStyles?: string }) {
   return (
     <svg className={cssStyles} viewBox="0 0 24.00 24.00" fill="none">
+      <title> :emoji </title>
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"

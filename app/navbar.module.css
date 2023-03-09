@@ -1,5 +1,5 @@
 .nav {
-  border-bottom: 2px dashed var(--primary);
+  border-bottom: 1px solid var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;

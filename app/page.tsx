@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import { Feather } from "./comps/Icons";
 import PostKichir from "./comps/PostKichir";
 import Container from "./comps/dls/Container";
+import ShowKichirs from "./comps/ShowKichirs";
 
 // async function getData() {
 //   const tags = await prismaClient?.hashTags.findMany({
@@ -19,6 +20,7 @@ export default async function Home() {
     <main className={styles.pageBody}>
       <Container>
         <PostKichir />
+        <ShowKichirs />
         <div className={styles.featherHold}>
           <Feather cssStyles={styles.feather} />
         </div>
