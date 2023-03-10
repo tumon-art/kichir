@@ -1,18 +1,24 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Container from "./dls/Container";
-import { Emoji, Globe } from "./Icons";
+import { Emoji, Feather, Globe } from "./Icons";
 import styles from "./PostKichir.module.css";
 
 export default function PostKichir() {
   const { data: session } = useSession();
   const [text, setText] = useState<String>("");
 
+  const refTextArea = useRef<HTMLTextAreaElement>(null);
+
+  const textAreaFocus = () => {
+    refTextArea.current?.focus();
+  };
+
   return (
     <Container>
-      <div className={styles.main}>
+      <div id="writeKichir" className={styles.main}>
         <div className={styles.sect1}>
           <Image
             src={String(
@@ -43,6 +49,7 @@ export default function PostKichir() {
             }}
           >
             <textarea
+              ref={refTextArea}
               maxLength={100}
               className={styles.textArea}
               placeholder={`What's going on?`}
@@ -62,6 +69,10 @@ export default function PostKichir() {
             </div>
           </form>
         </div>
+      </div>
+
+      <div onClick={textAreaFocus} className={styles.featherHold}>
+        <Feather cssStyles={styles.feather} />
       </div>
     </Container>
   );

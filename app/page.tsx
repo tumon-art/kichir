@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import { Feather } from "./comps/Icons";
 import PostKichir from "./comps/PostKichir";
 import Container from "./comps/dls/Container";
 import ShowKichirs from "./comps/ShowKichirs";
@@ -21,9 +20,6 @@ export default async function Home() {
       <Container bX1px>
         <PostKichir />
         <ShowKichirs />
-        <div className={styles.featherHold}>
-          <Feather cssStyles={styles.feather} />
-        </div>
       </Container>
     </main>
   );

@@ -5,6 +5,9 @@ import useSWR from "swr";
 import Spinner from "./dls/Spinner";
 import { Kichir } from "@prisma/client";
 import Image from "next/image";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import updateLocale from "dayjs/plugin/updateLocale";
 
 const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
 
@@ -32,11 +35,31 @@ export default function ShowKichirs() {
       </Container>
     );
 
+  dayjs.extend(updateLocale);
+  dayjs.updateLocale("en", {
+    relativeTime: {
+      future: "in %s",
+      past: "%s",
+      s: "now",
+      m: "m",
+      mm: "%dm",
+      h: "h",
+      hh: "%dh",
+      d: "1d",
+      dd: "%d days",
+      M: "a month",
+      MM: "%d months",
+      y: "a year",
+      yy: "%d years",
+    },
+  });
+  dayjs.extend(relativeTime);
+
   return (
     <section>
-      {data?.map((e, i) => {
+      {data?.map((e) => {
         return (
-          <Container key={i} px1em>
+          <Container key={e.id} px1em>
             <div className={styles.card}>
               <div className={styles.imgHold}>
                 <Image
@@ -50,6 +73,9 @@ export default function ShowKichirs() {
               <div>
                 <span className={styles.name}> {e.author.name} </span>
                 <span className={styles.uname}> @{e.author.uname} </span>
+                <span className={styles.time}>
+                  &#9202; {dayjs(e.createdAt).fromNow()}
+                </span>
                 <div className={styles.bodyText}>{e.body}</div>
               </div>
             </div>

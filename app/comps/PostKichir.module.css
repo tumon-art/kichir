@@ -96,3 +96,17 @@
   width: 25px;
   cursor: pointer;
 }
+
+.featherHold {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+}
+
+.feather {
+  height: 40px;
+  width: 40px;
+}
