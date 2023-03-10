@@ -10,3 +10,9 @@
 .mt3em {
   margin: 3em 0 0 0;
 }
+
+.bX1px {
+  border: 1px var(--primary);
+  border-left-style: solid;
+  border-right-style: solid;
+}

@@ -43,7 +43,7 @@ export default function PostKichir() {
             }}
           >
             <textarea
-              maxLength={50}
+              maxLength={100}
               className={styles.textArea}
               placeholder={`What's going on?`}
               value={String(text)}

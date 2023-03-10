@@ -1,0 +1,32 @@
+.loadingDiv {
+  min-height: 50vh;
+}
+
+.card {
+  margin: 2em 0;
+  display: flex;
+}
+
+.imgHold {
+  margin: 0 0.3em 0 0;
+}
+
+.authorImg {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.uname {
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.bodyText {
+  padding: 0.5em 0 0 0;
+}

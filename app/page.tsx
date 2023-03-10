@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <main className={styles.pageBody}>
-      <Container>
+      <Container bX1px>
         <PostKichir />
         <ShowKichirs />
         <div className={styles.featherHold}>
