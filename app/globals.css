@@ -18,20 +18,14 @@
   --text-secondary: white;
   --danger: black;
   --dim: #c7cac7;
+  --dim2: #c7cac7;
   --lightDim: #3c3838;
   --btn-back: #e0e0e0;
   --box-shadow: 0 5px 4px 0px var(--dim);
   --transition-fast: 0.3s;
   /* --- CUSTOM END */
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
+  --primary-glow: radial-gradient(rgba(34, 180, 100, 0.4), rgb(13 83 64 / 0%));
   --secondary-glow: radial-gradient(
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
@@ -64,17 +58,19 @@
     /* --- CUSTOM START */
     --primary: #109457;
     --primary-shadow: #307454;
+    --primary1: #00e177;
     --text-secondary: white;
     --text-primary: #ffffff;
     --danger: black;
     --dim: #004119;
+    --dim2: #3aa53a;
     --lightDim: #a1a0a0;
     --btn-back: #003a1f;
     --box-shadow: 0 5px 4px 0px var(--dim);
 
     /* --- CUSTOM END */
 
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --primary-glow: radial-gradient(rgb(1 255 114 / 40%), rgb(13 83 64 / 0%));
     --secondary-glow: linear-gradient(
       to bottom right,
       rgba(1, 65, 255, 0),

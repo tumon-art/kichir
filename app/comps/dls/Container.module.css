@@ -16,3 +16,9 @@
   border-left-style: solid;
   border-right-style: solid;
 }
+
+@media (max-width: 700px) {
+  .bX1px {
+    border: none;
+  }
+}

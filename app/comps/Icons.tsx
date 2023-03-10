@@ -3,8 +3,8 @@ import styles from "./Icons.module.css";
 export function Logo() {
   return (
     <svg
-      width="50"
-      height="50"
+      width="40"
+      height="40"
       version="1.1"
       viewBox="0 0 512 512"
       fill="#000000"

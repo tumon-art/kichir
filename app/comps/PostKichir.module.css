@@ -104,6 +104,10 @@
   position: fixed;
   bottom: 30px;
   right: 20px;
+  padding: 5px;
+  cursor: pointer;
+  background: var(--primary-glow);
+  border-radius: 50%;
 }
 
 .feather {
