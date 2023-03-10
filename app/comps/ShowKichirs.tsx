@@ -8,6 +8,7 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
+import { Comment, Love, View } from "./Icons";
 
 const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
 
@@ -55,6 +56,10 @@ export default function ShowKichirs() {
   });
   dayjs.extend(relativeTime);
 
+  // Generate Random number
+  function randomInt(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
   return (
     <section>
       {data?.map((e) => {
@@ -77,6 +82,21 @@ export default function ShowKichirs() {
                   &#9202; {dayjs(e.createdAt).fromNow()}
                 </span>
                 <div className={styles.bodyText}>{e.body}</div>
+                <div className={styles.cardFooter}>
+                  <div className={styles.iconHold}>
+                    <Love cssStyles={styles.loveIcon} />{" "}
+                    <span> {randomInt(20, 70)}</span>
+                  </div>
+
+                  <div className={styles.iconHold}>
+                    <Comment cssStyles={styles.loveIcon} />{" "}
+                    <span> {randomInt(1, 10)} </span>
+                  </div>
+                  <div className={styles.iconHold}>
+                    <View cssStyles={styles.ViewIcon} />
+                    <span> {randomInt(50, 200)} </span>
+                  </div>
+                </div>
               </div>
             </div>
           </Container>

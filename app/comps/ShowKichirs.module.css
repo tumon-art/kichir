@@ -37,3 +37,39 @@
 .bodyText {
   padding: 0.5em 0 0 0;
 }
+
+.cardFooter {
+  margin-top: 1em;
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  display: flex;
+  gap: 2em;
+}
+
+.iconHold {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.loveIcon {
+  fill: none;
+  stroke: var(--lightDim);
+  stroke-width: 1.5px;
+  height: 18px;
+  width: auto;
+  transition: var(--transition-fast);
+}
+
+.ViewIcon {
+  fill: none;
+  stroke: var(--lightDim);
+  stroke-width: 1.5px;
+  height: 18px;
+  width: auto;
+  transition: var(--transition-fast);
+}
+
+.loveIcon:hover {
+  stroke: var(--primary);
+  fill: var(--primary);
+}
