@@ -36,6 +36,7 @@ export default function ShowKichirs() {
       </Container>
     );
 
+  dayjs.extend(relativeTime);
   dayjs.extend(updateLocale);
   dayjs.updateLocale("en", {
     relativeTime: {
@@ -54,7 +55,6 @@ export default function ShowKichirs() {
       yy: "%d years",
     },
   });
-  dayjs.extend(relativeTime);
 
   // Generate Random number
   function randomInt(min: number, max: number) {
