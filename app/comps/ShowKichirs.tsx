@@ -22,7 +22,7 @@ interface AllKichris extends Kichir {
 
 export default function ShowKichirs() {
   const { data, error, isLoading } = useSWR<AllKichris[]>(
-    "/api/getPosts",
+    "/api/getkichirs",
     fetcherGET
   );
 
