@@ -100,7 +100,7 @@ export default function AddInfo({ session }: { session: Session }) {
         }),
       })
         .then((r) => r.json())
-        .then((d) => setLink("/home"))
+        .then((d) => setLink("/"))
         .catch((err) => console.log(err));
   };
 
