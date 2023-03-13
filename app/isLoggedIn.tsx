@@ -9,8 +9,6 @@ export default function Isloggedin() {
 
   const { data: session } = useSession();
 
-  console.log(session);
-
   if (session) {
     return (
       <>
@@ -20,6 +18,7 @@ export default function Isloggedin() {
         >
           {session.user?.name ? session.user?.name?.split(" ")[0] : "Logout"}
         </button>
+
         <Modal
           isOpen={isModelOpen}
           cssStyles={styles.customModal}

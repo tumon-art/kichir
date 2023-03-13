@@ -1,18 +1,24 @@
 import styles from "./Modal.module.css";
 
-interface ModalProps {
-  children: React.ReactNode;
-  isOpen: boolean;
-  setModel: (arg1: boolean) => void;
-  cssStyles?: string;
-}
+/**
+ * Modal Component
+ * @param {React.ReactNode} children - takes children
+ * @param {boolean} isOpen - to show the comp
+ * @param {(arg:boolean)=>} setModel - show/hide function;
+ * @param {string} cssStyles - takes css class;
+ */
 
 export default function Modal({
   children,
   isOpen,
   setModel,
   cssStyles,
-}: ModalProps) {
+}: {
+  children: React.ReactNode;
+  isOpen: boolean;
+  setModel: (arg1: boolean) => void;
+  cssStyles?: string;
+}) {
   if (!isOpen) return null;
 
   return (

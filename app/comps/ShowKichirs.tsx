@@ -48,7 +48,7 @@ export default function ShowKichirs() {
       h: "h",
       hh: "%dh",
       d: "1d",
-      dd: "%d days",
+      dd: "%dd",
       M: "a month",
       MM: "%d months",
       y: "a year",
@@ -76,11 +76,16 @@ export default function ShowKichirs() {
                 />
               </div>
               <div>
-                <span className={styles.name}> {e.author.name} </span>
-                <span className={styles.uname}> @{e.author.uname} </span>
-                <span className={styles.time}>
-                  &#9202; {dayjs(e.createdAt).fromNow()}
-                </span>
+                <div className={styles.cardTop}>
+                  <span className={styles.name}> {e.author.name} </span>
+                  <span className={styles.uname}> @{e.author.uname} </span>
+                  <span className={styles.timehold}>
+                    <span className={styles.dot}></span>
+                    <span className={styles.time}>
+                      {dayjs(e.createdAt).fromNow()}
+                    </span>
+                  </span>
+                </div>
                 <div className={styles.bodyText}>{e.body}</div>
                 <div className={styles.cardFooter}>
                   <div className={styles.iconHold}>

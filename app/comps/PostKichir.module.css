@@ -9,6 +9,10 @@
   border-bottom-style: solid;
 }
 
+.main:focus-visible {
+  height: 300px;
+}
+
 .sect1 {
   grid-area: sect1;
   display: flex;
@@ -47,7 +51,7 @@
   padding-left: 4px;
 }
 
-.textArea:focus {
+/* .textArea:focus {
   height: 100px;
 }
 
@@ -55,7 +59,7 @@
   display: flex;
   gap: 0.4em;
   align-items: center;
-}
+} */
 
 .spanText {
   display: none;

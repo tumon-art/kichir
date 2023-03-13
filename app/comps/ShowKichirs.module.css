@@ -16,6 +16,11 @@
   object-fit: cover;
 }
 
+.cardTop {
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+}
 .name {
   font-weight: bold;
   font-size: 1rem;
@@ -25,6 +30,18 @@
   color: var(--lightDim);
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+.timehold {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background: var(--lightDim);
 }
 
 .time {

@@ -1,14 +1,17 @@
 "use client";
+import EmojiPicker, { EmojiStyle, Theme } from "emoji-picker-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Container from "./dls/Container";
 import { Emoji, Feather, Globe } from "./Icons";
+import Modal from "./Modal";
 import styles from "./PostKichir.module.css";
 
 export default function PostKichir() {
   const { data: session } = useSession();
-  const [text, setText] = useState<String>("");
+  const [text, setText] = useState<any>("");
+  const [showEmoji, setShowEmoji] = useState<boolean>(false);
 
   const refTextArea = useRef<HTMLTextAreaElement>(null);
 
@@ -47,6 +50,7 @@ export default function PostKichir() {
                 .catch((err) => console.log(err));
               setText("");
             }}
+            className={styles.form}
           >
             <textarea
               ref={refTextArea}
@@ -62,17 +66,25 @@ export default function PostKichir() {
             </span>
             {/* --- Sect2 Footer */}
             <div className={styles.footerHold}>
-              <div>
+              <div onClick={() => setShowEmoji((p) => !p)}>
                 <Emoji cssStyles={styles.emojiSvg} />
               </div>
               <button type="submit"> Kichir </button>
             </div>
           </form>
         </div>
-      </div>
-
-      <div onClick={textAreaFocus} className={styles.featherHold}>
-        <Feather cssStyles={styles.feather} />
+        {showEmoji && (
+          <Modal isOpen={showEmoji} setModel={setShowEmoji}>
+            <EmojiPicker
+              theme={Theme.AUTO}
+              emojiStyle={EmojiStyle.TWITTER}
+              onEmojiClick={(e) => setText((p: any) => p + e.emoji)}
+            />
+          </Modal>
+        )}
+        <div onClick={textAreaFocus} className={styles.featherHold}>
+          <Feather cssStyles={styles.feather} />
+        </div>
       </div>
     </Container>
   );
