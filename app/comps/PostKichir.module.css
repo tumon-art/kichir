@@ -96,10 +96,22 @@
   opacity: 50%;
 }
 
+.iconsHold {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
 .emojiSvg {
-  height: 25px;
-  width: 25px;
+  height: 22px;
+  width: 22px;
   cursor: pointer;
+}
+
+.photoImage {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  fill: var(--primary);
 }
 
 .featherHold {

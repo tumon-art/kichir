@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import Container from "./dls/Container";
 import useOnOutSideClick from "./hooks/useOnOutSideClick";
-import { Emoji, Feather, Globe } from "./Icons";
+import { Emoji, Feather, Globe, Photo } from "./Icons";
 import Modal from "./Modal";
 import styles from "./PostKichir.module.css";
 
@@ -73,8 +73,13 @@ export default function PostKichir() {
             </span>
             {/* --- Sect2 Footer */}
             <div className={styles.footerHold}>
-              <div onClick={() => setShowEmoji((p) => !p)}>
-                <Emoji cssStyles={styles.emojiSvg} />
+              <div className={styles.iconsHold}>
+                <div onClick={() => setShowEmoji((p) => !p)}>
+                  <Emoji cssStyles={styles.emojiSvg} />
+                </div>
+                <div>
+                  <Photo cssStyles={styles.photoImage} />
+                </div>
               </div>
               <button type="submit"> Kichir </button>
             </div>
