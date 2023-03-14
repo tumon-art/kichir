@@ -13,6 +13,9 @@ export default function PostKichir() {
   const { data: session } = useSession();
   const [text, setText] = useState<any>("");
   const [showEmoji, setShowEmoji] = useState<boolean>(false);
+  //Img
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
 
   const refTextArea = useRef<HTMLTextAreaElement>(null);
   const refEmojiComp = useRef<HTMLDivElement>(null);
@@ -77,9 +80,17 @@ export default function PostKichir() {
                 <div onClick={() => setShowEmoji((p) => !p)}>
                   <Emoji cssStyles={styles.emojiSvg} />
                 </div>
-                <div>
-                  <Photo cssStyles={styles.photoImage} />
-                </div>
+                <label htmlFor="imageUpload">
+                  <div>
+                    <Photo cssStyles={styles.photoImage} />
+                    <input
+                      className={styles.imgUploader}
+                      accept="image/jpeg,image/png,image/jpg"
+                      type="file"
+                      id="imageUpload"
+                    />
+                  </div>
+                </label>
               </div>
               <button type="submit"> Kichir </button>
             </div>

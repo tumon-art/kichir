@@ -114,6 +114,12 @@
   fill: var(--primary);
 }
 
+.imgUploader {
+  width: 0.1em;
+  height: 0.1em;
+  opacity: 0;
+  z-index: -1;
+}
 .featherHold {
   display: flex;
   justify-content: center;
