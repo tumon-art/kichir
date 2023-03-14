@@ -7,6 +7,7 @@
   padding: 0.3em 0.3em 0 0.3em;
   border: 1px var(--primary);
   border-bottom-style: solid;
+  position: relative;
 }
 
 .main:focus-visible {
@@ -117,4 +118,14 @@
 .feather {
   height: 40px;
   width: 40px;
+}
+
+.emojiCompHold {
+  position: absolute;
+  height: 450px;
+  bottom: -460px;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
 }

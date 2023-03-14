@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import Container from "./dls/Container";
+import useOnOutSideClick from "./hooks/useOnOutSideClick";
 import { Emoji, Feather, Globe } from "./Icons";
 import Modal from "./Modal";
 import styles from "./PostKichir.module.css";
@@ -14,10 +15,16 @@ export default function PostKichir() {
   const [showEmoji, setShowEmoji] = useState<boolean>(false);
 
   const refTextArea = useRef<HTMLTextAreaElement>(null);
+  const refEmojiComp = useRef<HTMLDivElement>(null);
 
   const textAreaFocus = () => {
     refTextArea.current?.focus();
   };
+
+  useOnOutSideClick(refEmojiComp, () => {
+    console.log("outside");
+    setShowEmoji(false);
+  });
 
   return (
     <Container>
@@ -74,13 +81,13 @@ export default function PostKichir() {
           </form>
         </div>
         {showEmoji && (
-          <Modal isOpen={showEmoji} setModel={setShowEmoji}>
+          <div className={styles.emojiCompHold} ref={refEmojiComp}>
             <EmojiPicker
               theme={Theme.AUTO}
               emojiStyle={EmojiStyle.TWITTER}
               onEmojiClick={(e) => setText((p: any) => p + e.emoji)}
             />
-          </Modal>
+          </div>
         )}
         <div onClick={textAreaFocus} className={styles.featherHold}>
           <Feather cssStyles={styles.feather} />
