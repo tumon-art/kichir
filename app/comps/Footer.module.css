@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 1em 0;
+}
+.textHold {
+  display: flex;
+  gap: 0.6em;
+  flex-wrap: wrap;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+.span {
+  font-size: 0.8rem;
+}
+
+.span2 {
+  font-size: 0.8rem;
+  margin: 1em 0 0 0;
+  color: var(--lightDim);
+}

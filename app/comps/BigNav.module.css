@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 50vh;
+}
+.IconNTexthold {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
+.text {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.homeSvg {
+  height: 1.7em;
+  width: auto;
+  stroke: var(--primary);
+  stroke-width: 2;
+}
+
+.profileHold {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileHold span {
+  font-weight: bold;
+}
+
+.kichirBtn {
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--primary);
+  color: var(--text-white);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.kichirBtn:hover {
+  opacity: 70%;
+}

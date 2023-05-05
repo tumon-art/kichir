@@ -1,0 +1,211 @@
+.loadingDiv {
+  min-height: 50vh;
+}
+
+.card {
+  margin: 2em 0;
+  display: flex;
+}
+
+.imgHold {
+  margin: 0 0.3em 0 0;
+}
+
+.imgHoldMobile {
+  margin: 0 0.3em 0 0;
+}
+
+.authorImg {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cardSect2 {
+  width: 100%;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardTopSect1 {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.ellipsisIconHold {
+  margin: 0 0 0 1em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MODAL */
+.customModal {
+  padding: 20px;
+}
+
+.askHold {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-top: 2em;
+  font-weight: bolder;
+}
+
+.askHold div:first-of-type {
+  color: var(--danger);
+}
+
+.askHold div {
+  cursor: pointer;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  display: inline-block;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.uname {
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.timehold {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background: var(--lightDim);
+}
+
+.time {
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 0.3em;
+}
+
+.bodyText {
+  padding: 0.5em 0 0 0;
+  white-space: pre-line;
+  transition: var(--transition-fast);
+}
+
+.kichirImageHold {
+  margin: 1em 0;
+}
+
+.kichirImage {
+  object-fit: contain;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.cardFooter {
+  margin-top: 1em;
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  display: flex;
+  gap: 2em;
+}
+
+.iconHold {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.loveIcon {
+  fill: none;
+  stroke: var(--lightDim);
+  stroke-width: 1.5px;
+  height: 22px;
+  width: auto;
+  transition: var(--transition-fast);
+}
+
+.ViewIcon {
+  fill: none;
+  stroke: var(--lightDim);
+  stroke-width: 1.5px;
+  height: 22px;
+  width: auto;
+  transition: var(--transition-fast);
+}
+
+.loveIcon:hover {
+  /* stroke: var(--text-secondary);
+  fill: var(--primary); */
+  cursor: pointer;
+}
+
+.loveFilled {
+  stroke: var(--primary);
+  fill: var(--primary);
+}
+
+.xMarkIcon {
+  stroke: var(--text-secondary);
+  stroke-width: 2px;
+  height: 30px;
+  width: 30px;
+  padding: 2px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 1;
+  background-color: var(--primary-shadow);
+}
+
+.imageModal {
+  border-radius: 5px;
+  object-fit: contain;
+  width: 60vw;
+  height: 80vh;
+  backdrop-filter: blur(5px);
+}
+
+@media (max-width: 500px) {
+  .imageModal {
+    border-radius: 0px;
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .imgHold {
+    display: none;
+  }
+}
+
+@media (min-width: 500px) {
+  .imageModal {
+    border-radius: 0px;
+    object-fit: contain;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .imgHoldMobile {
+    display: none;
+  }
+}

@@ -1,0 +1,12 @@
+.nav {
+  border-bottom: 1px dotted var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 0 2em;
+}
+
+.nav h1 {
+  color: var(--primary);
+}

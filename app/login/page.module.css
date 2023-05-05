@@ -1,0 +1,14 @@
+.main {
+}
+
+.pageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginHold {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

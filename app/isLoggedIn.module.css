@@ -1,0 +1,46 @@
+.btn {
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  color: var(--primary);
+  font-weight: bolder;
+  display: inline;
+  padding: 2px 5px;
+  cursor: pointer;
+  width: 90px;
+  background: var(--btn-back);
+}
+
+.loggedName {
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  color: var(--primary);
+  font-weight: bolder;
+  display: inline;
+  padding: 2px 5px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 90px;
+  background: var(--btn-back);
+}
+
+.customModal {
+  padding: 20px;
+}
+
+.askHold {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-top: 2em;
+  font-weight: bolder;
+}
+
+.askHold div:first-of-type {
+  color: var(--danger);
+}
+
+.askHold div {
+  cursor: pointer;
+}

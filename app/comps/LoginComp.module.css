@@ -1,0 +1,76 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3em;
+  color: var(--primary);
+  height: 260px;
+}
+
+.texts {
+}
+.p {
+  font-size: 0.7rem;
+  color: var(--lightDim);
+}
+
+.p2 {
+  font-size: 0.7rem;
+  color: var(--lightDim);
+}
+
+.customEmail {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.customEmail > *:hover {
+  outline: 2px dashed var(--primary-shadow);
+  outline-offset: 3px;
+}
+.customEmail input {
+  padding: 0.6em 0 0.6em 2em;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background: var(--dim);
+  width: 100%;
+}
+.customEmail button {
+  padding: 0.3em 0;
+  height: 35px;
+  display: block;
+  border: none;
+  text-align: center;
+  width: 100%;
+  border-radius: 6px;
+  background: var(--primary);
+  color: var(--text-secondary);
+  font-weight: bolder;
+  cursor: pointer;
+}
+.loginBtn {
+  background-color: var(--primary);
+  padding: 0.3em 2em;
+  display: flex;
+  height: 35px;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  color: var(--text-secondary);
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  border-radius: 6px;
+}
+
+.loginBtn:hover {
+  outline: 2px dashed var(--primary-shadow);
+  outline-offset: 3px;
+}
+.loginBtn .googleLogo {
+  height: 30px;
+  width: 30px;
+}

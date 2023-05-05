@@ -1,0 +1,29 @@
+.ellipsis {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  padding: 3px;
+  transition: var(--transition-fast);
+}
+
+.ellipsis:hover {
+  background-color: var(--primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.feather {
+}
+.feather_1 {
+  fill: var(--dim2);
+}
+.feather_2 {
+  fill: var(--primary);
+}
+.feather_3 {
+  fill: var(--primary1);
+}
+
+.EmojiPaths {
+  stroke: var(--primary);
+}

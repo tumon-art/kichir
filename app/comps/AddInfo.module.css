@@ -1,0 +1,74 @@
+.main {
+  color: var(--primary);
+  height: 260px;
+}
+
+.customEmail {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 1em 0 0 0;
+}
+
+.customEmail fieldset {
+  outline: none;
+  border: 2px dotted var(--primary);
+  border-radius: 6px;
+}
+
+.customEmail fieldset legend {
+  margin-left: 2em;
+  padding: 0 0.5em;
+}
+
+.inputUname,
+.name {
+  padding: 0.6em 0 0.6em 2em;
+  font-size: 0.9rem;
+  border: none;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  outline: none;
+}
+
+.spanErr {
+  color: var(--danger);
+  font-size: 0.8rem;
+  padding: 0 0 0 0.2em;
+}
+
+.spanNoErr {
+  color: var(--primary);
+  font-size: 0.8rem;
+  padding: 0 0 0 0.2em;
+}
+
+.customEmail button {
+  padding: 0.3em 0;
+  height: 35px;
+  display: block;
+  border: none;
+  text-align: center;
+  width: 100%;
+  border-radius: 6px;
+  background: var(--primary);
+  color: var(--text-secondary);
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.loadingDiv {
+  height: 260px;
+  width: 100%;
+  position: relative;
+}
+
+.btn_opacity_full {
+  opacity: 100%;
+}
+
+.btn_opacity_20 {
+  opacity: 20%;
+}

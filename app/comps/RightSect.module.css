@@ -1,0 +1,18 @@
+.subSect {
+  max-width: 340px;
+  min-width: 300px;
+  position: sticky;
+  top: -280px;
+  align-self: start;
+  display: none;
+}
+
+.toFollowHold {
+  /* background-color: var(--primary); */
+}
+
+@media (min-width: 640px) {
+  .subSect {
+    display: block;
+  }
+}
