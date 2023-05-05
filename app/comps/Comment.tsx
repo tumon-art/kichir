@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./Comment.module.css";
 import { Session } from "next-auth";
-import { useRef, useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function Comment({
   session,
@@ -10,38 +10,37 @@ export default function Comment({
   session: Session | null;
   defaultImg: string;
 }) {
-  const devRef = useRef<HTMLDivElement>(null);
-  const [content, setContent] = useState("");
+  const [commentText, setCommentText] = useState("");
 
-  const handleChange = (event: React.SyntheticEvent<HTMLDivElement>) => {
-    console.log(devRef.current?.textContent?.split("").reverse().join(""));
-    const target = event.currentTarget as HTMLDivElement;
-    setContent(devRef.current?.textContent?.split("").reverse().join("") || "");
+  const onFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    alert("form submit");
   };
+
   return (
     <main className={styles.main}>
-      <div className={styles.AvaterNcommentHold}>
-        <Image
-          src={String(session?.user?.image) || defaultImg}
-          height="30"
-          width="30"
-          alt="img"
-          className={styles.img}
-        />
-        <div className={styles.comment}>
+      <form onSubmit={onFormSubmit} className={styles.comment}>
+        <div className={styles.AvaterNcommentHold}>
+          <Image
+            src={session?.user?.image || defaultImg}
+            height="30"
+            width="30"
+            alt="img"
+            className={styles.img}
+          />
           <textarea
             maxLength={200}
             className={styles.textArea}
             placeholder={`Reply Kichri`}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
             required
           ></textarea>
         </div>
-      </div>
-      <div>
-        <button className={styles.Btn}> Reply </button>
-      </div>
+        <button type="submit" className={styles.Btn}>
+          Reply
+        </button>
+      </form>
     </main>
   );
 }
