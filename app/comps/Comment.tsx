@@ -4,9 +4,11 @@ import { Session } from "next-auth";
 import { FormEvent, useState } from "react";
 
 export default function Comment({
+  kichirId,
   session,
   defaultImg,
 }: {
+  kichirId: number;
   session: Session | null;
   defaultImg: string;
 }) {
@@ -14,7 +16,19 @@ export default function Comment({
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    alert("form submit");
+
+    fetch("/api/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ kichirId: kichirId, commentText: commentText }),
+    })
+      .then((r) => {
+        setCommentText("");
+        console.log("comment added");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

@@ -121,22 +121,22 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
             </span>
           </div>
 
-            {/* --- CARD BODY TEXT */}
-            <div className={styles.bodyText}>{kichir.body}</div>
+          {/* --- CARD BODY TEXT */}
+          <div className={styles.bodyText}>{kichir.body}</div>
 
-            {/* --- CARD IMAGE */}
-            {kichir.img && (
-              <div className={styles.kichirImageHold}>
-                <Image
-                  src={kichir.img}
-                  height="360"
-                  width="440"
-                  alt="Image"
-                  className={styles.kichirImage}
-                  onClick={() => setImageModal(kichir.img!)}
-                />
-              </div>
-            )}
+          {/* --- CARD IMAGE */}
+          {kichir.img && (
+            <div className={styles.kichirImageHold}>
+              <Image
+                src={kichir.img}
+                height="360"
+                width="440"
+                alt="Image"
+                className={styles.kichirImage}
+                onClick={() => setImageModal(kichir.img!)}
+              />
+            </div>
+          )}
 
           {/* --- CARD FOOTER */}
           <div className={styles.cardFooter}>
@@ -169,7 +169,13 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
               <span> {randomInt(50, 200)} </span>
             </div>
           </div>
-          <Comment session={session} defaultImg={defaultImg} />
+
+          {/* COMMENT COMPONENT */}
+          <Comment
+            kichirId={kichir.id}
+            session={session}
+            defaultImg={defaultImg}
+          />
         </div>
       </div>
 

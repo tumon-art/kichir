@@ -99,7 +99,6 @@ export default function ToFollow({ users }: { users: User[] }) {
     });
   };
 
-  console.log(users);
   return (
     <>
       {users?.map((user: User, i) => {
