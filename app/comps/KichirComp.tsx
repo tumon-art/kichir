@@ -13,6 +13,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
 import { AllKichris } from "./ShowKichirs";
 import Comment from "./Comment";
+import useSWR from "swr";
+import ShowComments from "./ShowComments";
 
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   console.log("Kichir Comp");
@@ -178,6 +180,9 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
           />
         </div>
       </div>
+
+      {/* SHOW ALL COMMENTS */}
+      <ShowComments kichirId={kichir.id} />
 
       {/* --- DELETE KICHIR MODAL */}
       {selectedElement ? (
