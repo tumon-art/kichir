@@ -79,15 +79,6 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   return (
     <Container key={kichir.id} px1em>
       <div className={styles.card}>
-        <div className={styles.imgHold}>
-          <Image
-            src={kichir.author.image || defaultImg}
-            alt="author"
-            height={40}
-            width={40}
-            className={styles.authorImg}
-          />
-        </div>
         <div className={styles.cardSect2}>
           {/* --- CARD TOP HEAD */}
           <div className={styles.cardTop}>
@@ -96,8 +87,8 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
                 <Image
                   src={kichir.author.image || defaultImg}
                   alt="author"
-                  height={30}
-                  width={30}
+                  height={40}
+                  width={40}
                   className={styles.authorImg}
                 />
               </div>

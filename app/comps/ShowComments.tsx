@@ -1,6 +1,7 @@
 import { Comment } from "@prisma/client";
 import { fetcherGET } from "./ShowKichirs";
 import useSWR from "swr";
+import styles from "./ShowComments.module.css";
 
 export default function ShowComments({ kichirId }: { kichirId: number }) {
   const { data, isLoading, error } = useSWR<Comment>(
@@ -10,5 +11,5 @@ export default function ShowComments({ kichirId }: { kichirId: number }) {
 
   if (isLoading) <div> Loading </div>;
   console.log(data);
-  return <div>Show Comments</div>;
+  return <div className={styles.main}>Show Comments</div>;
 }

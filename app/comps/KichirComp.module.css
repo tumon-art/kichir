@@ -3,10 +3,6 @@
   display: flex;
 }
 
-.imgHold {
-  margin: 0 0.3em 0 0;
-}
-
 .imgHoldMobile {
   margin: 0 0.3em 0 0;
 }
@@ -123,7 +119,7 @@
   font-size: 0.8rem;
   display: flex;
   gap: 2em;
-  border-bottom: 1px solid var(--lightDim);
+  border-bottom: 1px dotted var(--primary-shadow);
 }
 
 .iconHold {
@@ -189,9 +185,8 @@
     width: 100vw;
     height: 100vh;
   }
-
-  .imgHold {
-    display: none;
+  .imgHoldMobile {
+    height: 30px;
   }
 }
 
@@ -204,6 +199,6 @@
   }
 
   .imgHoldMobile {
-    display: none;
+    /* display: none; */
   }
 }
