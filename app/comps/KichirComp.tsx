@@ -8,15 +8,14 @@ import Link from "next/link";
 import Container from "./dls/Container";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import updateLocale from "dayjs/plugin/updateLocale";
+import dayjs from "../../lib/tools/dayjsConfig";
 import { AllKichris } from "./ShowKichirs";
 import Comment from "./Comment";
 import useSWR from "swr";
 import ShowComments from "./ShowComments";
 import Card from "./dls/Card";
 
+dayjs;
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   console.log("Kichir Comp");
   const { data: session } = useSession();
@@ -32,27 +31,6 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
       (e) => e.userId === session?.user?.id && setisLiked(true)
     );
   }, []);
-
-  // --- DAY.JS CONFIG
-  dayjs.extend(relativeTime);
-  dayjs.extend(updateLocale);
-  dayjs.updateLocale("en", {
-    relativeTime: {
-      future: "in %s",
-      past: "%s",
-      s: "now",
-      m: "1m",
-      mm: "%dm",
-      h: "1h",
-      hh: "%dh",
-      d: "1d",
-      dd: "%dd",
-      M: "1 month",
-      MM: "%d months",
-      y: "a year",
-      yy: "%d years",
-    },
-  });
 
   // Generate Random number
   function randomInt(min: number, max: number) {
@@ -242,7 +220,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
       <Comment kichirId={kichir.id} session={session} defaultImg={defaultImg} />
 
       {/* SHOW ALL COMMENTS */}
-      <ShowComments kichirId={kichir.id} />
+      <ShowComments randomInt={randomInt} kichirId={kichir.id} />
     </>
   );
 }

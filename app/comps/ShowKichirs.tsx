@@ -5,9 +5,7 @@ import useSWR, { KeyedMutator, preload } from "swr";
 import Spinner from "./dls/Spinner";
 import { Kichir, Love as loves } from "@prisma/client";
 import Image from "next/image";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import updateLocale from "dayjs/plugin/updateLocale";
+import dayjs from "../../lib/tools/dayjsConfig";
 import { CommentIcon, Ellipsis, Love, View, XMark } from "./Icons";
 import Modal from "./dls/Modal";
 import { useEffect, useState } from "react";
@@ -97,27 +95,6 @@ const KichirComp = ({
     );
   }, []);
 
-  // --- DAY.JS CONFIG
-  dayjs.extend(relativeTime);
-  dayjs.extend(updateLocale);
-  dayjs.updateLocale("en", {
-    relativeTime: {
-      future: "in %s",
-      past: "%s",
-      s: "now",
-      m: "1m",
-      mm: "%dm",
-      h: "1h",
-      hh: "%dh",
-      d: "1d",
-      dd: "%dd",
-      M: "1 month",
-      MM: "%d months",
-      y: "a year",
-      yy: "%d years",
-    },
-  });
-
   // Generate Random number
   function randomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -192,23 +169,22 @@ const KichirComp = ({
           <Link passHref href={`/kichir/${kichir.id}`}>
             {/* --- CARD BODY TEXT */}
             <div className={styles.bodyText}>{kichir.body}</div>{" "}
-
           </Link>
-            {/* --- CARD IMAGE */}
-            {kichir.img && (
-              <div className={styles.kichirImageHold}>
-                <a>
-                  <Image
-                    src={kichir.img}
-                    height="360"
-                    width="440"
-                    alt="Image"
-                    className={styles.kichirImage}
-                    onClick={() => setImageModal(kichir.img!)}
-                  />
-                </a>
-              </div>
-            )}
+          {/* --- CARD IMAGE */}
+          {kichir.img && (
+            <div className={styles.kichirImageHold}>
+              <a>
+                <Image
+                  src={kichir.img}
+                  height="360"
+                  width="440"
+                  alt="Image"
+                  className={styles.kichirImage}
+                  onClick={() => setImageModal(kichir.img!)}
+                />
+              </a>
+            </div>
+          )}
 
           {/* --- CARD FOOTER */}
           <div className={styles.cardFooter}>
