@@ -1,5 +1,5 @@
 .card {
-  margin: 2em 0;
+  margin: 1em 0 0 0;
   display: flex;
 }
 
@@ -119,7 +119,6 @@
   font-size: 0.8rem;
   display: flex;
   gap: 2em;
-  border-bottom: 1px dotted var(--primary-shadow);
 }
 
 .iconHold {
