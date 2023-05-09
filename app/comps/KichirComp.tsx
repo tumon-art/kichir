@@ -128,7 +128,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
 
               <div className={styles.iconHold}>
                 <CommentIcon cssStyles={styles.loveIcon} />
-                <span> {randomInt(1, 10)} </span>
+                <span> {kichir.comments.length} </span>
               </div>
               <div className={styles.iconHold}>
                 <View cssStyles={styles.ViewIcon} />

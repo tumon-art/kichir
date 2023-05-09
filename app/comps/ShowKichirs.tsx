@@ -3,7 +3,7 @@ import Container from "./dls/Container";
 import styles from "./ShowKichirs.module.css";
 import useSWR, { KeyedMutator, preload } from "swr";
 import Spinner from "./dls/Spinner";
-import { Kichir, Love as loves } from "@prisma/client";
+import { Comment as commnets, Kichir, Love as loves } from "@prisma/client";
 import Image from "next/image";
 import dayjs from "../../lib/tools/dayjsConfig";
 import { CommentIcon, Ellipsis, Love, View, XMark } from "./Icons";
@@ -20,6 +20,7 @@ export const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
 
 export interface AllKichris extends Kichir {
   loves: loves[];
+  comments: commnets[];
   author: {
     name: string | null;
     image: string | null;
@@ -32,6 +33,7 @@ export default function ShowKichirs() {
   const { data, error, isLoading, mutate } = useSWR<
     (Kichir & {
       loves: loves[];
+      comments: commnets[];
       author: {
         name: string | null;
         image: string | null;
@@ -162,7 +164,7 @@ const KichirComp = ({
 
           <Link passHref href={`/kichir/${kichir.id}`}>
             {/* --- CARD BODY TEXT */}
-            <div className={styles.bodyText}>{kichir.body}</div>{" "}
+            <div className={styles.bodyText}>{kichir.body}</div>
           </Link>
           {/* --- CARD IMAGE */}
           {kichir.img && (
@@ -204,7 +206,7 @@ const KichirComp = ({
 
             <div className={styles.iconHold}>
               <CommentIcon cssStyles={styles.loveIcon} />
-              <span> {randomInt(1, 10)} </span>
+              <span> {kichir.comments.length} </span>
             </div>
             <div className={styles.iconHold}>
               <View cssStyles={styles.ViewIcon} />
