@@ -13,6 +13,8 @@ import { useSession } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import ImageModal from "./dls/ImageModal";
 import Link from "next/link";
+import randomInt from "@/lib/tools/randomInt";
+import defaultImg from "@/lib/tools/deaultImg";
 
 export const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
 
@@ -86,19 +88,11 @@ const KichirComp = ({
   const [imageModal, setImageModal] = useState<string>();
   const [isLiked, setisLiked] = useState<boolean>();
 
-  const defaultImg =
-    "https://previews.123rf.com/images/miketea/miketea1411/miketea141100285/33835661-green-pixel-art-style-pixel-background.jpg";
-
   useEffect(() => {
     kichir.loves.forEach(
       (e) => e.userId === session?.user?.id && setisLiked(true)
     );
   }, []);
-
-  // Generate Random number
-  function randomInt(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
 
   // Handle LOVE POST
   const handleLove = async (kichirId: number, userId: string) => {

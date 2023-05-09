@@ -11,11 +11,10 @@ import { useEffect, useState } from "react";
 import dayjs from "../../lib/tools/dayjsConfig";
 import { AllKichris } from "./ShowKichirs";
 import Comment from "./Comment";
-import useSWR from "swr";
 import ShowComments from "./ShowComments";
-import Card from "./dls/Card";
+import randomInt from "@/lib/tools/randomInt";
+import defaultImg from "@/lib/tools/deaultImg";
 
-dayjs;
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   console.log("Kichir Comp");
   const { data: session } = useSession();
@@ -23,19 +22,11 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   const [imageModal, setImageModal] = useState<string>();
   const [isLiked, setisLiked] = useState<boolean>();
 
-  const defaultImg =
-    "https://previews.123rf.com/images/miketea/miketea1411/miketea141100285/33835661-green-pixel-art-style-pixel-background.jpg";
-
   useEffect(() => {
     kichir.loves.forEach(
       (e) => e.userId === session?.user?.id && setisLiked(true)
     );
   }, []);
-
-  // Generate Random number
-  function randomInt(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
 
   // Handle LOVE POST
   const handleLove = async (kichirId: number, userId: string) => {
@@ -220,7 +211,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
       <Comment kichirId={kichir.id} session={session} defaultImg={defaultImg} />
 
       {/* SHOW ALL COMMENTS */}
-      <ShowComments randomInt={randomInt} kichirId={kichir.id} />
+      <ShowComments session={session} kichirId={kichir.id} />
     </>
   );
 }

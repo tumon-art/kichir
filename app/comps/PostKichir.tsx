@@ -10,6 +10,7 @@ import styles from "./PostKichir.module.css";
 import { mutate } from "swr";
 import { toast } from "react-hot-toast";
 import Spinner from "./dls/Spinner";
+import defaultImg from "@/lib/tools/deaultImg";
 
 export default function PostKichir() {
   const { data: session } = useSession();
@@ -135,10 +136,7 @@ export default function PostKichir() {
       <div id="writeKichir" className={styles.main}>
         <div className={styles.sect1}>
           <Image
-            src={String(
-              session?.user?.image ||
-                "https://previews.123rf.com/images/miketea/miketea1411/miketea141100285/33835661-green-pixel-art-style-pixel-background.jpg"
-            )}
+            src={String(session?.user?.image || defaultImg)}
             alt="img"
             width="40"
             height="40"

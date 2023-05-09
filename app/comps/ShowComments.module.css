@@ -1,3 +1,111 @@
 .main {
   /* border-top: 1px dotted var(--primary-shadow); */
 }
+
+.card {
+  margin: 2em 0;
+  display: flex;
+}
+
+.imgHold {
+  margin: 0 0.3em 0 0;
+}
+
+.imgHoldMobile {
+  margin: 0 0.3em 0 0;
+}
+
+.authorImg {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cardSect2 {
+  width: 100%;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardTopSect1 {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.ellipsisIconHold {
+  margin: 0 0 0 1em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  display: inline-block;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.uname {
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.timehold {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background: var(--lightDim);
+}
+
+.time {
+  color: var(--lightDim);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 0.3em;
+}
+
+.bodyText {
+  padding: 0.5em 0 0 0;
+  white-space: pre-line;
+  transition: var(--transition-fast);
+}
+
+/* MODAL */
+.customModal {
+  padding: 20px;
+}
+
+.askHold {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-top: 2em;
+  font-weight: bolder;
+}
+
+.askHold div:first-of-type {
+  color: var(--danger);
+}
+
+.askHold div {
+  cursor: pointer;
+}

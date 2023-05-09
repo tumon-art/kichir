@@ -3,6 +3,8 @@ import styles from "./Comment.module.css";
 import { Session } from "next-auth";
 import { FormEvent, useState } from "react";
 import Container from "./dls/Container";
+import { mutate } from "swr";
+import { toast } from "react-hot-toast";
 
 export default function Comment({
   kichirId,
@@ -27,7 +29,8 @@ export default function Comment({
     })
       .then((r) => {
         setCommentText("");
-        console.log("comment added");
+        mutate(`/api/getcomment?id=${kichirId}`);
+        toast("Comment added successfully");
       })
       .catch((err) => console.log(err));
   };
@@ -47,7 +50,7 @@ export default function Comment({
             <textarea
               maxLength={200}
               className={styles.textArea}
-              placeholder={`Reply Kichri`}
+              placeholder={`Reply Kichir`}
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               required
