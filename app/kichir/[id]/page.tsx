@@ -12,7 +12,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   if (isLoading) return <div> Loading </div>;
   return (
-    <Container bX1px>
+    <Container px1em bX1px>
       <KichirComp kichir={data!} />
     </Container>
   );

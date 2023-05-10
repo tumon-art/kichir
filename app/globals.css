@@ -141,6 +141,7 @@ a {
 
 .mainBody {
   display: flex;
+  width: 100%;
 }
 
 @media (min-width: 640px) {
