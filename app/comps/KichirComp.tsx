@@ -48,7 +48,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
 
   return (
     <>
-      <main key={kichir.id}>
+      <Container key={kichir.id} px1em>
         <div className={styles.card}>
           <div className={styles.cardSect2}>
             {/* --- CARD TOP HEAD */}
@@ -206,7 +206,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
             />
           </ImageModal>
         )}
-      </main>
+      </Container>
       {/* COMMENT COMPONENT */}
       <Comment kichirId={kichir.id} session={session} defaultImg={defaultImg} />
 

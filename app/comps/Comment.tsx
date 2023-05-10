@@ -37,7 +37,7 @@ export default function Comment({
 
   return (
     <main className={styles.main}>
-      <Container>
+      <Container px1em>
         <form onSubmit={onFormSubmit} className={styles.comment}>
           <div className={styles.AvaterNcommentHold}>
             <Image

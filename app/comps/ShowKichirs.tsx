@@ -29,7 +29,6 @@ export interface AllKichris extends Kichir {
 }
 
 export default function ShowKichirs() {
-  console.log("ShowKichir.tsx");
   const { data, error, isLoading, mutate } = useSWR<
     (Kichir & {
       loves: loves[];
