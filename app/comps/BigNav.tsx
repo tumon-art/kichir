@@ -1,7 +1,14 @@
 "use client";
 import { useSession } from "next-auth/react";
 import styles from "./BigNav.module.css";
-import { Bookmarks, Followers, HashTag, Home, Profile } from "./Icons";
+import {
+  Bookmarks,
+  Followers,
+  HashTag,
+  Home,
+  Notification,
+  Profile,
+} from "./Icons";
 import Card from "./dls/Card";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,6 +51,13 @@ export default function BigNav() {
         <div className={styles.IconNTexthold}>
           <HashTag cssStyles={styles.homeSvg} />{" "}
           <span className={styles.text}> Explore </span>
+        </div>
+      </Card>
+
+      <Card py07em>
+        <div className={styles.IconNTexthold}>
+          <Notification cssStyles={styles.homeSvg} />{" "}
+          <span className={styles.text}> Notices </span>
         </div>
       </Card>
 
