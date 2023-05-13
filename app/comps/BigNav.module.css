@@ -53,3 +53,30 @@
 .kichirBtn:hover {
   opacity: 70%;
 }
+
+.noticeBoard {
+  border: 1px solid var(--primary);
+  padding: 1em;
+  border-radius: 10px;
+  max-width: 200px;
+  margin: 3em 0 0 0;
+}
+
+.noticeBoard p {
+  margin: 0.6em 0 0 0;
+  font-size: 0.8rem;
+}
+
+.pFooter {
+  margin: 0.6em 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.tgSVG {
+  height: 2em;
+  width: auto;
+  stroke: var(--primary);
+  stroke-width: 10;
+}

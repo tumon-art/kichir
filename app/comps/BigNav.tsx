@@ -8,10 +8,12 @@ import {
   Home,
   Notification,
   Profile,
+  Telegram,
 } from "./Icons";
 import Card from "./dls/Card";
 import Image from "next/image";
 import Link from "next/link";
+import defaultImg from "@/lib/tools/deaultImg";
 
 export default function BigNav() {
   const { data: session } = useSession();
@@ -65,10 +67,7 @@ export default function BigNav() {
       <Card py07em>
         <div className={styles.profileHold}>
           <Image
-            src={String(
-              session?.user?.image ||
-                "https://previews.123rf.com/images/miketea/miketea1411/miketea141100285/33835661-green-pixel-art-style-pixel-background.jpg"
-            )}
+            src={String(session?.user?.image || defaultImg)}
             alt="img"
             width="40"
             height="40"
@@ -78,6 +77,19 @@ export default function BigNav() {
           <span> {session?.user?.name} </span>
         </div>
       </Card>
+
+      <div className={styles.noticeBoard}>
+        <h3> Notice </h3>
+
+        <p>
+          I stoped adding features. Contact me if you need full source code.
+          <br></br>
+          <div className={styles.pFooter}>
+            <Telegram cssStyles={styles.tgSVG} />
+            <a href="https://t.me/tumon_001">t.me/tumon_001</a>
+          </div>
+        </p>
+      </div>
     </aside>
   );
 }
