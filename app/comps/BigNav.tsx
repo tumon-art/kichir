@@ -86,7 +86,7 @@ export default function BigNav() {
           <br></br>
           <div className={styles.pFooter}>
             <Telegram cssStyles={styles.tgSVG} />
-            <a href="https://t.me/tumon_001">t.me/tumon_001</a>
+      <a className={styles.a} href="https://t.me/tumon_001">t.me/tumon_001</a>
           </div>
         </p>
       </div>
