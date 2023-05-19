@@ -49,7 +49,6 @@ export default async function RootLayout({
       </Head>
       <body className={inter.className}>
         <Provider>
-          <Navbar />
           <main className="pageBody">
             <section className="sect1">
               <Container mt3em>
@@ -57,7 +56,10 @@ export default async function RootLayout({
               </Container>
             </section>
             <div className="mainBody">
-              {children}
+              <div>
+                <Navbar />
+                {children}
+              </div>
               <RightSect hashTags={hashTags} users={users} />
             </div>
           </main>

@@ -134,99 +134,88 @@ export default function PostKichir() {
   });
 
   return (
-    <>
-      <div className={styles.nav}>
-        <Link href="/">
-          <Logo />
-        </Link>
-        <h1> Kichir </h1>
-        <div className={styles.loginHold}>
-          <Isloggedin />
+    <Container>
+      <div id="writeKichir" className={styles.main}>
+        <div className={styles.sect1}>
+          <Image
+            src={String(session?.user?.image || defaultImg)}
+            alt="img"
+            width="40"
+            height="40"
+            className={styles.img}
+          />
         </div>
-      </div>
-      <Container>
-        <div id="writeKichir" className={styles.main}>
-          <div className={styles.sect1}>
-            <Image
-              src={String(session?.user?.image || defaultImg)}
-              alt="img"
-              width="40"
-              height="40"
-              className={styles.img}
+        <div className={styles.sect2}>
+          {/* --- FORM  */}
+          <form onSubmit={handleOnSubmit} className={styles.form}>
+            <textarea
+              ref={refTextArea}
+              maxLength={200}
+              className={styles.textArea}
+              placeholder={`What's going on?`}
+              value={String(text)}
+              onChange={(e) => setText(e.target.value)}
+              required
+            ></textarea>
+            {imageSrc && (
+              <div className={styles.previewContainer}>
+                {/* --- X button for Preveiw */}
+                <span onClick={() => setImageSrc(undefined)}>
+                  <XMark cssStyles={styles.xMarkIcon} />
+                </span>
+                <Image
+                  src={String(imageSrc)}
+                  height="100"
+                  width="150"
+                  alt="preview"
+                  className={styles.previewImg}
+                />
+              </div>
+            )}
+            <span className={styles.spanText}>
+              <Globe cssStyles={styles.globeSvg} /> Everyone can see
+            </span>
+            {/* --- Sect2 Footer */}
+            <div className={styles.footerHold}>
+              <div className={styles.iconsHold}>
+                <div onClick={() => setShowEmoji((p) => !p)}>
+                  <Emoji cssStyles={styles.emojiSvg} />
+                </div>
+
+                {/* --- Image Upload */}
+                <label htmlFor="imageUpload">
+                  <div>
+                    <Photo cssStyles={styles.photoImage} />
+                    <input
+                      className={styles.imgUploader}
+                      onChange={handleOnImgChange}
+                      accept="image/jpeg,image/png,image/jpg"
+                      type="file"
+                      id="imageUpload"
+                      name="file"
+                    />
+                  </div>
+                </label>
+              </div>
+              <button type={loading ? "button" : "submit"}>
+                {loading ? <Spinner small white /> : "Kichir"}
+              </button>
+            </div>
+          </form>
+        </div>
+        {showEmoji && (
+          <div className={styles.emojiCompHold} ref={refEmojiComp}>
+            <EmojiPicker
+              theme={Theme.AUTO}
+              emojiStyle={EmojiStyle.TWITTER}
+              onEmojiClick={(e) => setText((p: any) => p + e.emoji)}
             />
           </div>
-          <div className={styles.sect2}>
-            {/* --- FORM  */}
-            <form onSubmit={handleOnSubmit} className={styles.form}>
-              <textarea
-                ref={refTextArea}
-                maxLength={200}
-                className={styles.textArea}
-                placeholder={`What's going on?`}
-                value={String(text)}
-                onChange={(e) => setText(e.target.value)}
-                required
-              ></textarea>
-              {imageSrc && (
-                <div className={styles.previewContainer}>
-                  {/* --- X button for Preveiw */}
-                  <span onClick={() => setImageSrc(undefined)}>
-                    <XMark cssStyles={styles.xMarkIcon} />
-                  </span>
-                  <Image
-                    src={String(imageSrc)}
-                    height="100"
-                    width="150"
-                    alt="preview"
-                    className={styles.previewImg}
-                  />
-                </div>
-              )}
-              <span className={styles.spanText}>
-                <Globe cssStyles={styles.globeSvg} /> Everyone can see
-              </span>
-              {/* --- Sect2 Footer */}
-              <div className={styles.footerHold}>
-                <div className={styles.iconsHold}>
-                  <div onClick={() => setShowEmoji((p) => !p)}>
-                    <Emoji cssStyles={styles.emojiSvg} />
-                  </div>
-
-                  {/* --- Image Upload */}
-                  <label htmlFor="imageUpload">
-                    <div>
-                      <Photo cssStyles={styles.photoImage} />
-                      <input
-                        className={styles.imgUploader}
-                        onChange={handleOnImgChange}
-                        accept="image/jpeg,image/png,image/jpg"
-                        type="file"
-                        id="imageUpload"
-                        name="file"
-                      />
-                    </div>
-                  </label>
-                </div>
-                <button type={loading ? "button" : "submit"}>
-                  {loading ? <Spinner small white /> : "Kichir"}
-                </button>
-              </div>
-            </form>
-          </div>
-          {showEmoji && (
-            <div className={styles.emojiCompHold} ref={refEmojiComp}>
-              <EmojiPicker
-                theme={Theme.AUTO}
-                emojiStyle={EmojiStyle.TWITTER}
-                onEmojiClick={(e) => setText((p: any) => p + e.emoji)}
-              />
-            </div>
-          )}
-          <div onClick={textAreaFocus} className={styles.featherHold}>
-            <Feather cssStyles={styles.feather} />
-          </div>
+        )}
+        <div onClick={textAreaFocus} className={styles.featherHold}>
+          <Feather cssStyles={styles.feather} />
         </div>
-      </Container>
-    </>
+      </div>
+    </Container>
   );
 }

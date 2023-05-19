@@ -1,10 +1,21 @@
 .nav {
   border-bottom: 1px dotted var(--primary);
+  border-left: 1px dotted var(--primary);
+  border-right: 1px dotted var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2em;
   padding: 0 2em;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-start-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 .nav h1 {
