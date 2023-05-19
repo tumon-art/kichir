@@ -81,14 +81,16 @@ export default function BigNav() {
       <div className={styles.noticeBoard}>
         <h3> Notice </h3>
 
-        <p>
+        <div className={styles.divP}>
           I stoped adding features. Contact me if you need full source code.
           <br></br>
           <div className={styles.pFooter}>
             <Telegram cssStyles={styles.tgSVG} />
-      <a className={styles.a} href="https://t.me/tumon_001">t.me/tumon_001</a>
+            <a className={styles.a} href="https://t.me/tumon_001">
+              t.me/tumon_001
+            </a>
           </div>
-        </p>
+        </div>
       </div>
     </aside>
   );

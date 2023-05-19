@@ -4,6 +4,7 @@ import Isloggedin from "./isLoggedIn";
 import styles from "./navbar.module.css";
 
 export default function Navbar() {
+  return null;
   return (
     <div className={styles.nav}>
       <Link href="/">

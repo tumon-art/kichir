@@ -52,7 +52,7 @@ export default async function RootLayout({
           <Navbar />
           <main className="pageBody">
             <section className="sect1">
-              <Container>
+              <Container mt3em>
                 <BigNav />
               </Container>
             </section>
