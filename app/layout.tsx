@@ -25,7 +25,7 @@ async function getData() {
 
   // FETCH USERS
   const users = await prismaClient?.user.findMany({
-    take: 20,
+    take: 5,
   });
 
   return { tags, users };
