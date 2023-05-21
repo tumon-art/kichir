@@ -15,6 +15,7 @@ import ImageModal from "./dls/ImageModal";
 import Link from "next/link";
 import randomInt from "@/lib/tools/randomInt";
 import defaultImg from "@/lib/tools/deaultImg";
+import useSWRInfinite from "swr/infinite";
 
 export const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
 
@@ -29,28 +30,29 @@ export interface AllKichris extends Kichir {
 }
 
 export default function ShowKichirs() {
-  const { data, error, isLoading, mutate } = useSWR<
-    (Kichir & {
-      loves: loves[];
-      comments: commnets[];
-      author: {
-        name: string | null;
-        image: string | null;
-        uname: string | null;
-      };
-    })[]
-  >("/api/getkichirs", fetcherGET);
+  const { data, error, isLoading, mutate } = useSWR<AllKichris[]>(
+    "/api/getkichirs",
+    fetcherGET
+  );
+
+  const getKey = (pageIndex: number, previousPageData: any) => {
+    if (previousPageData && !previousPageData.length) return null; // reached the end
+    return `/api/showkichirs?page=${pageIndex + 1}&limit=5`; // SWR key
+  };
+
+  // const { data, size, setSize, error, isLoading, mutate } =
+  //   useSWRInfinite<AllKichris>(getKey, fetcherGET);
 
   useEffect(() => {
     setTimeout(() => {
-      data?.map((each: Kichir) => {
+      data?.map((each: AllKichris) => {
         preload(`/api/getkichirs?id=${each.id}`, fetcherGET);
       });
     }, 3000);
   }, []);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading)
+  if (!data)
     return (
       <Container px1em mt3em>
         <div className={styles.loadingDiv}>
@@ -61,7 +63,7 @@ export default function ShowKichirs() {
 
   return (
     <section>
-      {data?.map((e) => (
+      {data.flat().map((e: AllKichris) => (
         <KichirComp
           key={e.id}
           kichir={e}
@@ -69,6 +71,7 @@ export default function ShowKichirs() {
           mutateKichir={mutate}
         />
       ))}
+      {/* <button onClick={() => setSize(size + 1)}>Load More</button> */}
     </section>
   );
 }
@@ -80,7 +83,6 @@ const KichirComp = ({
   allKichir,
 }: {
   kichir: AllKichris;
-
   mutateKichir: KeyedMutator<AllKichris[]>;
   allKichir: AllKichris[];
 }) => {
@@ -113,7 +115,8 @@ const KichirComp = ({
       .catch((err) => console.log(err));
   };
 
-  console.log("KichirComp");
+  console.log("KichirComp", kichir);
+
   return (
     <Container key={kichir.id} px1em>
       <div className={styles.card}>
