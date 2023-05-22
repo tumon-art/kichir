@@ -159,6 +159,11 @@ a {
   width: 100%;
 }
 
+.loadingDiv {
+  min-height: 50vh;
+  position: relative;
+}
+
 @media (min-width: 640px) {
   .pageBody {
     display: flex;

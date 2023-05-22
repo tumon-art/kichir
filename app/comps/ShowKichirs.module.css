@@ -185,6 +185,7 @@
   backdrop-filter: blur(5px);
 }
 
+/* LOADING BUTTTON */
 .loadMoreHold {
   display: flex;
   justify-content: center;

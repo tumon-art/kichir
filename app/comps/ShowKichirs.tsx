@@ -32,14 +32,13 @@ export interface AllKichris extends Kichir {
 export default function ShowKichirs() {
   const getKey = (pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null;
-    return `/api/showkichirs?page=${pageIndex + 1}&limit=5`;
+    return `/api/showkichirs?page=${pageIndex + 1}&limit=10`;
   };
 
-  const { data, size, setSize, error, mutate } = useSWRInfinite<AllKichris>(
-    getKey,
-    fetcherGET
-  );
+  const { data, size, setSize, error, mutate, isValidating } =
+    useSWRInfinite<AllKichris>(getKey, fetcherGET);
 
+  console.log(isValidating);
   // PREFETCH
   useEffect(() => {
     setTimeout(() => {
@@ -70,9 +69,17 @@ export default function ShowKichirs() {
         />
       ))}
       <div className={styles.loadMoreHold}>
-        <button className={styles.loadBtn} onClick={() => setSize(size + 1)}>
-          Load More
-        </button>
+        {isValidating ? (
+          <Container px1em mt3em>
+            <div className={styles.loadingDiv}>
+              <Spinner />
+            </div>
+          </Container>
+        ) : (
+          <button className={styles.loadBtn} onClick={() => setSize(size + 1)}>
+            Load More
+          </button>
+        )}
       </div>
     </section>
   );
