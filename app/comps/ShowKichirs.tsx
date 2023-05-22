@@ -1,7 +1,7 @@
 "use client";
 import Container from "./dls/Container";
 import styles from "./ShowKichirs.module.css";
-import useSWR, { KeyedMutator, preload } from "swr";
+import { KeyedMutator, preload } from "swr";
 import Spinner from "./dls/Spinner";
 import { Comment as commnets, Kichir, Love as loves } from "@prisma/client";
 import Image from "next/image";
@@ -30,19 +30,17 @@ export interface AllKichris extends Kichir {
 }
 
 export default function ShowKichirs() {
-  // const { data, error, isLoading, mutate } = useSWR<AllKichris[]>(
-  //   "/api/getkichirs",
-  //   fetcherGET
-  // );
-
   const getKey = (pageIndex: number, previousPageData: any) => {
-    if (previousPageData && !previousPageData.length) return null; // reached the end
-    return `/api/showkichirs?page=${pageIndex + 1}&limit=5`; // SWR key
+    if (previousPageData && !previousPageData.length) return null;
+    return `/api/showkichirs?page=${pageIndex + 1}&limit=5`;
   };
 
-  const { data, size, setSize, error, isLoading, mutate } =
-    useSWRInfinite<AllKichris>(getKey, fetcherGET);
+  const { data, size, setSize, error, mutate } = useSWRInfinite<AllKichris>(
+    getKey,
+    fetcherGET
+  );
 
+  // PREFETCH
   useEffect(() => {
     setTimeout(() => {
       data?.map((each: AllKichris) => {
@@ -71,7 +69,9 @@ export default function ShowKichirs() {
           mutateKichir={mutate}
         />
       ))}
-      <button onClick={() => setSize(size + 1)}>Load More</button>
+      <button className={styles.loadBtn} onClick={() => setSize(size + 1)}>
+        Load More
+      </button>
     </section>
   );
 }
