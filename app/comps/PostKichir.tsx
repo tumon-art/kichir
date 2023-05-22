@@ -7,18 +7,20 @@ import Container from "./dls/Container";
 import useOnOutSideClick from "./hooks/useOnOutSideClick";
 import { Emoji, Feather, Globe, Logo, Photo, XMark } from "./Icons";
 import styles from "./PostKichir.module.css";
-import { mutate } from "swr";
+import { useSWRConfig } from "swr";
 import { toast } from "react-hot-toast";
 import Spinner from "./dls/Spinner";
 import defaultImg from "@/lib/tools/deaultImg";
 import Link from "next/link";
 import Isloggedin from "../isLoggedIn";
+import { AllKichris } from "./ShowKichirs";
 
 export default function PostKichir() {
   const { data: session } = useSession();
   const [loading, setloading] = useState<boolean>(false);
   const [text, setText] = useState<any>("");
   const [showEmoji, setShowEmoji] = useState<boolean>(false);
+  const { mutate } = useSWRConfig();
 
   //Img
   const [imageSrc, setImageSrc] = useState<

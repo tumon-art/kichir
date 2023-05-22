@@ -30,18 +30,18 @@ export interface AllKichris extends Kichir {
 }
 
 export default function ShowKichirs() {
-  const { data, error, isLoading, mutate } = useSWR<AllKichris[]>(
-    "/api/getkichirs",
-    fetcherGET
-  );
+  // const { data, error, isLoading, mutate } = useSWR<AllKichris[]>(
+  //   "/api/getkichirs",
+  //   fetcherGET
+  // );
 
   const getKey = (pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null; // reached the end
     return `/api/showkichirs?page=${pageIndex + 1}&limit=5`; // SWR key
   };
 
-  // const { data, size, setSize, error, isLoading, mutate } =
-  //   useSWRInfinite<AllKichris>(getKey, fetcherGET);
+  const { data, size, setSize, error, isLoading, mutate } =
+    useSWRInfinite<AllKichris>(getKey, fetcherGET);
 
   useEffect(() => {
     setTimeout(() => {
@@ -71,7 +71,7 @@ export default function ShowKichirs() {
           mutateKichir={mutate}
         />
       ))}
-      {/* <button onClick={() => setSize(size + 1)}>Load More</button> */}
+      <button onClick={() => setSize(size + 1)}>Load More</button>
     </section>
   );
 }
@@ -114,8 +114,6 @@ const KichirComp = ({
       })
       .catch((err) => console.log(err));
   };
-
-  console.log("KichirComp", kichir);
 
   return (
     <Container key={kichir.id} px1em>
@@ -227,14 +225,14 @@ const KichirComp = ({
               onClick={async () => {
                 setSelectedElement(undefined);
                 mutateKichir(deleteKichir, {
-                  optimisticData: () =>
-                    allKichir.filter(
-                      (kichir) => kichir.id !== selectedElement.id
-                    ),
+                  optimisticData: (crnt) =>
+                    crnt!
+                      .flat()
+                      .filter((kichir) => kichir?.id !== selectedElement.id),
                   populateCache: () =>
-                    allKichir.filter(
-                      (kichir) => kichir.id !== selectedElement.id
-                    ),
+                    allKichir
+                      .flat()
+                      .filter((kichir) => kichir.id !== selectedElement.id),
                   revalidate: false,
                 });
                 function deleteKichir() {
