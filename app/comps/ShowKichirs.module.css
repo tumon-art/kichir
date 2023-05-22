@@ -185,6 +185,28 @@
   backdrop-filter: blur(5px);
 }
 
+.loadMoreHold {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 2em 0;
+}
+
+.loadBtn {
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bolder;
+  border-radius: 20px;
+  padding: 0.2em 1.2em;
+  transition: var(--transition-fast);
+}
+
+.loadBtn:hover {
+  opacity: 50%;
+  cursor: pointer;
+}
 @media (max-width: 500px) {
   .imageModal {
     border-radius: 0px;

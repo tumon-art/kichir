@@ -69,9 +69,11 @@ export default function ShowKichirs() {
           mutateKichir={mutate}
         />
       ))}
-      <button className={styles.loadBtn} onClick={() => setSize(size + 1)}>
-        Load More
-      </button>
+      <div className={styles.loadMoreHold}>
+        <button className={styles.loadBtn} onClick={() => setSize(size + 1)}>
+          Load More
+        </button>
+      </div>
     </section>
   );
 }
