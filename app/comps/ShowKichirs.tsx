@@ -52,8 +52,10 @@ export default function ShowKichirs() {
   if (!data)
     return (
       <Container px1em mt3em>
-        <div className={styles.loadingDiv}>
-          <Spinner />
+        <div className={styles.loadingHold}>
+          <div className={styles.loadingDiv}>
+            <Spinner />
+          </div>
         </div>
       </Container>
     );

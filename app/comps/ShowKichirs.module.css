@@ -1,3 +1,6 @@
+.loadingHold {
+  height: 100vh;
+}
 .loadingDiv {
   min-height: 50vh;
   position: relative;
