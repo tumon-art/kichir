@@ -76,7 +76,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100px;
-  display: inline-block;
 }
 
 .name:hover {
@@ -109,7 +108,7 @@
 }
 
 .bodyText {
-  padding: 0.5em 0 0 0;
+  padding: 0.5em 0.5em 0.5em 0;
   white-space: pre-line;
   transition: var(--transition-fast);
 }
@@ -198,8 +197,8 @@
 
 .loadBtn {
   border: none;
-  background-color: var(--primary);
-  color: white;
+  background-color: var(--btn-back);
+  color: var(--primary);
   font-size: 0.9rem;
   font-weight: bolder;
   border-radius: 20px;

@@ -39,14 +39,6 @@ export default async function RootLayout({
   const { tags: hashTags, users } = await getData();
   return (
     <html lang="en">
-      <Head>
-        {/* <link
-          rel="preload"
-          href="/api/getkichirs"
-          as="fetch"
-          crossOrigin="anonymous"
-        /> */}
-      </Head>
       <body className={inter.className}>
         <Provider>
           <main className="pageBody">

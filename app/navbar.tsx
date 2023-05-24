@@ -6,7 +6,7 @@ import styles from "./navbar.module.css";
 export default function Navbar() {
   return (
     <div className={styles.nav}>
-      <Link href="/">
+      <Link href="/" aria-label="Kichir Home">
         <Logo />
       </Link>
       <h1> Kichir </h1>

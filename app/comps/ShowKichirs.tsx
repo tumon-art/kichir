@@ -180,16 +180,14 @@ const KichirComp = ({
           {/* --- CARD IMAGE */}
           {kichir.img && (
             <div className={styles.kichirImageHold}>
-              <a>
-                <Image
-                  src={kichir.img}
-                  height="360"
-                  width="440"
-                  alt="Image"
-                  className={styles.kichirImage}
-                  onClick={() => setImageModal(kichir.img!)}
-                />
-              </a>
+              <Image
+                src={kichir.img}
+                height="360"
+                width="440"
+                alt="Image"
+                className={styles.kichirImage}
+                onClick={() => setImageModal(kichir.img!)}
+              />
             </div>
           )}
 
