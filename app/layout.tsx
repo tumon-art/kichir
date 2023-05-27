@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar";
 import Provider from "./provider";
-import Head from "next/head";
 import Container from "./comps/dls/Container";
 import BigNav from "./comps/BigNav";
 import prismaClient from "@/lib/prisma";
@@ -48,11 +47,13 @@ export default async function RootLayout({
               </Container>
             </section>
             <div className="mainBody">
-              <div>
-                <Navbar />
-                {children}
-              </div>
-              <RightSect hashTags={hashTags} users={users} />
+              <>
+                <div>
+                  <Navbar />
+                  {children}
+                </div>
+                <RightSect hashTags={hashTags} users={users} />
+              </>
             </div>
           </main>
         </Provider>
