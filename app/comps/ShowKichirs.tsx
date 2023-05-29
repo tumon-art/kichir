@@ -38,7 +38,6 @@ export default function ShowKichirs() {
   const { data, size, setSize, error, mutate, isValidating } =
     useSWRInfinite<AllKichris>(getKey, fetcherGET);
 
-  console.log(isValidating);
   // PREFETCH
   useEffect(() => {
     setTimeout(() => {

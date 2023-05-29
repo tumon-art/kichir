@@ -17,7 +17,7 @@ export default function PostKichir() {
   const [loading, setloading] = useState<boolean>(false);
   const [text, setText] = useState<any>("");
   const [showEmoji, setShowEmoji] = useState<boolean>(false);
-  const { mutate } = useSWRConfig();
+  const { mutate, ...extraConfig } = useSWRConfig();
 
   //Img
   const [imageSrc, setImageSrc] = useState<
@@ -114,7 +114,7 @@ export default function PostKichir() {
         .then((r) => {
           setText("");
           console.log("file submitted w/0 image");
-          mutate("/api/getkichirs");
+          mutate("$inf$/api/showkichirs?page=1&limit=10");
           toast("Kichir Published");
           setImageSrc(undefined);
           setloading(false);
