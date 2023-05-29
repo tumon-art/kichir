@@ -92,7 +92,7 @@ export default function PostKichir() {
             .then((r) => {
               setText("");
               console.log("image + form submit success!");
-              mutate("/api/getkichirs");
+              mutate("$inf$/api/showkichirs?page=1&limit=10");
               toast("Kichir Published");
               setImageSrc(undefined);
               setloading(false);
