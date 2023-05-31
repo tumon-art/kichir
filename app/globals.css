@@ -155,7 +155,6 @@ a {
 }
 
 .mainBody {
-  display: flex;
   width: 100%;
 }
 
@@ -176,6 +175,9 @@ a {
     display: flex;
     gap: 1em;
     width: 800px;
+  }
+  .mainRow{
+    width: 500px;
   }
 }
 
