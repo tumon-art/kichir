@@ -25,8 +25,18 @@
   background: var(--btn-back);
 }
 
-.customModal {
-  padding: 20px;
+.dialog {
+  margin: auto;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--text-secondary);
+  /* box-shadow: 0px 5px 14px 2px var(--primary-shadow); */
+  padding: 2em 2em;
+}
+
+.dialog h2 {
+  text-align: center;
 }
 
 .askHold {
