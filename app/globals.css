@@ -49,6 +49,52 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+.darkMode {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 20, 40, 40;
+  --background-end-rgb: 0, 20, 20;
+
+  /* --- CUSTOM START */
+  --primary: #109457;
+  --primary1: #00e177;
+  --primary-shadow: #307454;
+  --text-secondary: white;
+  --text-primary: #ffffff;
+  --danger: black;
+  --dim: #004119;
+  --dim2: #3aa53a;
+  --lightDim: #a1a0a0;
+  --btn-back: #003a1f;
+  --box-shadow: 0 5px 4px 0px var(--dim);
+  --transition-fast: 0.3s;
+  /* --- CUSTOM END */
+
+  --primary-glow: radial-gradient(rgb(1 255 114 / 40%), rgb(13 83 64 / 0%));
+  --secondary-glow: linear-gradient(
+    to bottom right,
+    rgba(1, 65, 255, 0),
+    rgba(1, 65, 255, 0),
+    rgba(1, 65, 255, 0.3)
+  );
+
+  --tile-start-rgb: 2, 13, 46;
+  --tile-end-rgb: 2, 5, 19;
+  --tile-border: conic-gradient(
+    #ffffff80,
+    #ffffff40,
+    #ffffff30,
+    #ffffff20,
+    #ffffff10,
+    #ffffff10,
+    #ffffff80
+  );
+
+  --callout-rgb: 20, 20, 20;
+  --callout-border-rgb: 108, 108, 108;
+  --card-rgb: 100, 100, 100;
+  --card-border-rgb: 200, 200, 200;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -176,7 +222,7 @@ a {
     gap: 1em;
     width: 800px;
   }
-  .mainRow{
+  .mainRow {
     width: 420px;
   }
 }

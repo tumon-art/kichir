@@ -13,6 +13,14 @@ export default function Navbar() {
       <div className={styles.loginHold}>
         <Isloggedin />
       </div>
+      {/* <button
+        onClick={() => {
+          const root = document.documentElement;
+          root.classList.toggle("darkMode");
+        }}
+      >
+        Toggle Dark Mode
+      </button> */}
     </div>
   );
 }

@@ -1,14 +1,12 @@
 "use client";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRef, useState } from "react";
-import Modal from "./comps/dls/Modal";
 import styles from "./isLoggedIn.module.css";
 
 export default function Isloggedin() {
-  const [isModelOpen, setisModelOpen] = useState<boolean>(false);
-
   const { data: session } = useSession();
 
+  console.log(session);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   if (session) {
