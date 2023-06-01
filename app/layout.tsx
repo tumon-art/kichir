@@ -36,6 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const { tags: hashTags, users } = await getData();
+
   return (
     <html lang="en">
       <body className={inter.className}>
