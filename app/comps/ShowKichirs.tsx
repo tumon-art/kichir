@@ -151,7 +151,7 @@ const KichirComp = ({
                 />
               </div>
               <Link href={`kichir/name`}>
-                <span className={styles.name}> {kichir.author.name} </span>
+                <h4 className={styles.name}> {kichir.author.name} </h4>
               </Link>
               <span className={styles.uname}> @{kichir.author.uname} </span>
               <span className={styles.timehold}>
