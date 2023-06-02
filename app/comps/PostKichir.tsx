@@ -134,7 +134,6 @@ export default function PostKichir() {
 
   return (
     <Container>
-      {" "}
       <div id="writeKichir" className={styles.main}>
         <div className={styles.sect1}>
           <Image

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "./comps/Icons";
 import Isloggedin from "./isLoggedIn";
 import styles from "./navbar.module.css";
+import DarkModeToggle from "./comps/dls/DarkModeToggle";
 
 export default function Navbar() {
   return (
@@ -11,7 +12,8 @@ export default function Navbar() {
       </Link>
       <h1> Kichir </h1>
       <div className={styles.loginHold}>
-        <Isloggedin />
+        {/* <Isloggedin /> */}
+        <DarkModeToggle />
       </div>
       {/* <button
         onClick={() => {
