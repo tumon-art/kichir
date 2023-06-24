@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import styles from "./BigNav.module.css";
 import {
   Bookmarks,
@@ -14,9 +14,13 @@ import Card from "./dls/Card";
 import Image from "next/image";
 import Link from "next/link";
 import defaultImg from "@/lib/tools/deaultImg";
+import { useRef } from "react";
 
 export default function BigNav() {
   const { data: session } = useSession();
+
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
   return (
     <aside className={styles.main}>
       <Card py07em>
@@ -65,7 +69,12 @@ export default function BigNav() {
 
       <button className={styles.kichirBtn}>Kichir</button>
       <Card py07em>
-        <div className={styles.profileHold}>
+        <div
+          onClick={() => {
+            dialogRef.current?.showModal();
+          }}
+          className={styles.profileHold}
+        >
           <Image
             src={String(session?.user?.image || defaultImg)}
             alt="img"
@@ -92,6 +101,40 @@ export default function BigNav() {
           </div>
         </div>
       </div>
+      <dialog
+        className={styles.dialog}
+        ref={dialogRef}
+        onClick={(e) => {
+          const dialogDimensions = dialogRef.current!.getBoundingClientRect();
+          if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+          ) {
+            dialogRef.current!.close();
+          }
+        }}
+      >
+        <h2> Do want to Logout? </h2>
+        <div className={styles.askHold}>
+          <div
+            onClick={() => {
+              signOut();
+              dialogRef.current?.close();
+            }}
+          >
+            Yes
+          </div>
+          <div
+            onClick={() => {
+              dialogRef.current?.close();
+            }}
+          >
+            No
+          </div>
+        </div>
+      </dialog>
     </aside>
   );
 }

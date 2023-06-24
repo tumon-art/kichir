@@ -86,3 +86,33 @@
   border-bottom: 2px solid var(--primary);
   padding: 0 0 0.3em 0;
 }
+
+.dialog {
+  margin: auto;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--text-secondary);
+  /* box-shadow: 0px 5px 14px 2px var(--primary-shadow); */
+  padding: 2em 2em;
+}
+
+.dialog h2 {
+  text-align: center;
+}
+
+.askHold {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-top: 2em;
+  font-weight: bolder;
+}
+
+.askHold div:first-of-type {
+  color: var(--danger);
+}
+
+.askHold div {
+  cursor: pointer;
+}
