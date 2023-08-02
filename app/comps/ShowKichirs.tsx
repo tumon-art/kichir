@@ -17,8 +17,6 @@ import randomInt from "@/lib/tools/randomInt";
 import defaultImg from "@/lib/tools/deaultImg";
 import useSWRInfinite from "swr/infinite";
 
-export const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
-
 export interface AllKichris extends Kichir {
   loves: loves[];
   comments: commnets[];
@@ -28,6 +26,9 @@ export interface AllKichris extends Kichir {
     uname: string | null;
   };
 }
+
+// SWR Fetch Function
+export const fetcherGET = (url: string) => fetch(url).then((r) => r.json());
 
 export default function ShowKichirs() {
   const getKey = (pageIndex: number, previousPageData: any) => {
@@ -48,7 +49,7 @@ export default function ShowKichirs() {
   }, []);
 
   if (error) return <div>failed to load</div>;
-  if (!data)
+  if (!data) // Show Skelation
     return (
       <Container px1em mt3em>
         <div className={styles.loadingHold}>
@@ -102,6 +103,7 @@ const KichirComp = ({
   const [isLiked, setisLiked] = useState<boolean>();
 
   useEffect(() => {
+    // An HACK for showing loved Posts. (Not Ideal!)
     kichir.loves.forEach(
       (e) => e.userId === session?.user?.id && setisLiked(true)
     );
@@ -120,6 +122,7 @@ const KichirComp = ({
     })
       .then((r) => {
         r.json();
+        // SWR Mutation
         mutateKichir();
       })
       .catch((err) => console.log(err));
@@ -224,6 +227,7 @@ const KichirComp = ({
         </div>
       </div>
 
+      {/* --- TODO Add HTML Navtive Modal */}
       {/* --- DELETE KICHIR MODAL */}
       {selectedElement ? (
         <Modal cssStyles={styles.customModal} setModel={setSelectedElement}>
@@ -243,7 +247,7 @@ const KichirComp = ({
                       .filter((kichir) => kichir.id !== selectedElement.id),
                   revalidate: false,
                 });
-                function deleteKichir() {
+                async function deleteKichir() {
                   return fetch(`/api/deletekichir?id=${selectedElement?.id}`, {
                     method: "DELETE",
                   })
@@ -274,6 +278,7 @@ const KichirComp = ({
       ) : null}
 
       {/* --- IMAGE MODAL  */}
+      {/* --- TODO Add HTML Navtive Modal */}
       {imageModal && (
         <ImageModal setImageModel={setImageModal}>
           {/* --- X button for Preveiw */}
