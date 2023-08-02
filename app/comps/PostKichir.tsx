@@ -25,6 +25,7 @@ export default function PostKichir() {
   >(undefined);
   const [uploadData, setUploadData] = useState();
 
+  // Refs for Text Area & Emoji Component
   const refTextArea = useRef<HTMLTextAreaElement>(null);
   const refEmojiComp = useRef<HTMLDivElement>(null);
 
@@ -92,6 +93,7 @@ export default function PostKichir() {
             .then((r) => {
               setText("");
               console.log("image + form submit success!");
+              // SWR Mutation
               mutate("$inf$/api/showkichirs?page=1&limit=10");
               toast("Kichir Published");
               setImageSrc(undefined);
@@ -114,6 +116,7 @@ export default function PostKichir() {
         .then((r) => {
           setText("");
           console.log("file submitted w/0 image");
+          // SWR Mutation
           mutate("$inf$/api/showkichirs?page=1&limit=10");
           toast("Kichir Published");
           setImageSrc(undefined);
@@ -127,8 +130,9 @@ export default function PostKichir() {
     refTextArea.current?.focus();
   };
 
+  // TO Hide Emoji Comp onOutSideClick
   useOnOutSideClick(refEmojiComp, () => {
-    console.log("outside");
+    console.log("onOutSideClick");
     setShowEmoji(false);
   });
 
