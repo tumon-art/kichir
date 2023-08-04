@@ -7,21 +7,22 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "./dls/Container";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dayjs from "../../lib/tools/dayjsConfig";
 import { AllKichris } from "./ShowKichirs";
 import Comment from "./Comment";
 import ShowComments from "./ShowComments";
 import randomInt from "@/lib/tools/randomInt";
 import defaultImg from "@/lib/tools/deaultImg";
+import DialogModal from "./dls/DialogModal";
 
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   console.log("Kichir Comp");
   const { data: session } = useSession();
-  const [selectedElement, setSelectedElement] = useState<AllKichris>();
   const [imageModal, setImageModal] = useState<string>();
   const [isLiked, setisLiked] = useState<boolean>();
 
+  const dialogRef = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     kichir.loves.forEach(
       (e) => e.userId === session?.user?.id && setisLiked(true)
@@ -49,6 +50,41 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   return (
     <>
       <Container key={kichir.id} px1em>
+        <DialogModal dialogRef={dialogRef}>
+          <h2> Wanna Delete This Kichir? </h2>
+          <div className={styles.askHold}>
+            <div
+              onClick={async () => {
+                async function deleteKichir() {
+                  return fetch(`/api/deletekichir?id=${kichir?.id}`, {
+                    method: "DELETE",
+                  })
+                    .then((response) => {
+                      if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                      }
+                      toast("Kichir deleted successfully");
+                      return response.json();
+                    })
+                    .catch((error) => {
+                      console.error("Error deleting Kichir:", error);
+                    });
+                }
+                deleteKichir();
+                dialogRef.current?.close();
+              }}
+            >
+              Yes
+            </div>
+            <div
+              onClick={() => {
+                dialogRef.current?.close();
+              }}
+            >
+              No
+            </div>
+          </div>
+        </DialogModal>
         <div className={styles.card}>
           <div className={styles.cardSect2}>
             {/* --- CARD TOP HEAD */}
@@ -78,7 +114,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
                 className={styles.ellipsisIconHold}
                 onClick={() => {
                   if (session?.user?.id === kichir.authorId)
-                    setSelectedElement(kichir);
+                    dialogRef.current?.showModal();
                 }}
               >
                 <Ellipsis />
@@ -137,58 +173,6 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
             </div>
           </div>
         </div>
-
-        {/* --- DELETE KICHIR MODAL */}
-        {selectedElement ? (
-          <Modal cssStyles={styles.customModal} setModel={setSelectedElement}>
-            <h2> Wanna Delete This Kichir? </h2>
-            <div className={styles.askHold}>
-              <div
-                onClick={async () => {
-                  setSelectedElement(undefined);
-                  // mutateKichir(deleteKichir, {
-                  //   optimisticData: () =>
-                  //     allKichir.filter(
-                  //       (kichir) => kichir.id !== selectedElement.id
-                  //     ),
-                  //   populateCache: () =>
-                  //     allKichir.filter(
-                  //       (kichir) => kichir.id !== selectedElement.id
-                  //     ),
-                  //   revalidate: false,
-                  // });
-                  function deleteKichir() {
-                    return fetch(
-                      `/api/deletekichir?id=${selectedElement?.id}`,
-                      {
-                        method: "DELETE",
-                      }
-                    )
-                      .then((response) => {
-                        if (!response.ok) {
-                          throw new Error("Network response was not ok");
-                        }
-                        toast("Kichir deleted successfully");
-                        return response.json();
-                      })
-                      .catch((error) => {
-                        console.error("Error deleting Kichir:", error);
-                      });
-                  }
-                }}
-              >
-                Yes
-              </div>
-              <div
-                onClick={() => {
-                  setSelectedElement(undefined);
-                }}
-              >
-                No
-              </div>
-            </div>
-          </Modal>
-        ) : null}
 
         {/* --- IMAGE MODAL  */}
         {imageModal && (

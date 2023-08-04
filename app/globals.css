@@ -157,6 +157,16 @@ a {
   position: relative;
 }
 
+.dialog {
+  margin: auto;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--text-secondary);
+  /* box-shadow: 0px 5px 14px 2px var(--primary-shadow); */
+  padding: 2em 2em;
+}
+
 @media (min-width: 640px) {
   .pageBody {
     display: flex;
