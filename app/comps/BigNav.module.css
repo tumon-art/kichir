@@ -6,14 +6,10 @@
 }
 
 .dialog {
-  /* margin: auto; */
-  z-index: 111;
   border: none;
   border-radius: 10px;
   background-color: var(--primary);
   color: var(--text-secondary);
-  /* box-shadow: 0px 5px 14px 2px var(--primary-shadow); */
-  padding: 2em 2em;
 }
 
 .dialog h2 {
