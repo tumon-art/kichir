@@ -15,12 +15,12 @@ import Image from "next/image";
 import Link from "next/link";
 import defaultImg from "@/lib/tools/deaultImg";
 import { useRef } from "react";
+import { DialogModalWrapper } from "./dls/DialogModalWrapper";
 
 export default function BigNav() {
   const { data: session } = useSession();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-
   return (
     <aside className={styles.main}>
       <Card py07em>
@@ -68,53 +68,23 @@ export default function BigNav() {
       </Card>
 
       <button className={styles.kichirBtn}>Kichir</button>
-      <Card py07em>
-        <div
-          onClick={() => {
-            dialogRef.current?.showModal();
-          }}
-          className={styles.profileHold}
-        >
-          <Image
-            src={String(session?.user?.image || defaultImg)}
-            alt="img"
-            width="40"
-            height="40"
-            className={styles.img}
-          />
+      <DialogModalWrapper
+        dialogRef={dialogRef}
+        preDialogContent={
+          <Card py07em>
+            <div className={styles.profileHold}>
+              <Image
+                src={String(session?.user?.image || defaultImg)}
+                alt="img"
+                width="40"
+                height="40"
+                className={styles.img}
+              />
 
-          <span> {session?.user?.name} </span>
-        </div>
-      </Card>
-
-      <div className={styles.noticeBoard}>
-        <h3> Notice </h3>
-
-        <div className={styles.divP}>
-          I stoped adding features. Contact me if you need full source code.
-          <br></br>
-          <div className={styles.pFooter}>
-            <Telegram cssStyles={styles.tgSVG} />
-            <a className={styles.a} href="https://t.me/tumon_001">
-              t.me/tumon_001
-            </a>
-          </div>
-        </div>
-      </div>
-      <dialog
-        className={styles.dialog}
-        ref={dialogRef}
-        onClick={(e) => {
-          const dialogDimensions = dialogRef.current!.getBoundingClientRect();
-          if (
-            e.clientX < dialogDimensions.left ||
-            e.clientX > dialogDimensions.right ||
-            e.clientY < dialogDimensions.top ||
-            e.clientY > dialogDimensions.bottom
-          ) {
-            dialogRef.current!.close();
-          }
-        }}
+              <span> {session?.user?.name} </span>
+            </div>
+          </Card>
+        }
       >
         <h2> Do want to Logout? </h2>
         <div className={styles.askHold}>
@@ -134,7 +104,44 @@ export default function BigNav() {
             No
           </div>
         </div>
-      </dialog>
+      </DialogModalWrapper>
+
+      <div className={styles.noticeBoard}>
+        <h3> Notice </h3>
+
+        <div className={styles.divP}>
+          I stoped adding features. Contact me if you need full source code.
+          <br></br>
+          <div className={styles.pFooter}>
+            <Telegram cssStyles={styles.tgSVG} />
+            <a className={styles.a} href="https://t.me/tumon_001">
+              t.me/tumon_001
+            </a>
+          </div>
+        </div>
+      </div>
     </aside>
+  );
+}
+
+interface DialogModalProps {
+  onClose: (e: React.MouseEvent<HTMLDialogElement, MouseEvent>) => void;
+  children: React.ReactNode;
+  dialogRef: React.RefObject<HTMLDialogElement>;
+}
+
+export function DialogModalNew({
+  dialogRef,
+  children,
+  onClose,
+}: DialogModalProps) {
+  return (
+    <dialog
+      ref={dialogRef}
+      className={styles.dialog}
+      onClick={(e) => onClose(e)}
+    >
+      {children}
+    </dialog>
   );
 }
