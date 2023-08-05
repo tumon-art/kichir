@@ -124,21 +124,37 @@ export default function BigNav() {
   );
 }
 
+import React from "react";
+
+/**
+ * Props for the DialogModalNew component.
+ */
 interface DialogModalProps {
+  /** Function to call when the modal should be closed. */
   onClose: (e: React.MouseEvent<HTMLDialogElement, MouseEvent>) => void;
+
+  /** Content to be displayed within the modal. */
   children: React.ReactNode;
+
+  /** Reference to the modal dialog element. */
   dialogRef: React.RefObject<HTMLDialogElement>;
 }
 
+/**
+ * Component to display a modal dialog.
+ *
+ * @param {DialogModalProps} props - The component props.
+ * @returns {JSX.Element} The DialogModalNew component.
+ */
 export function DialogModalNew({
   dialogRef,
   children,
   onClose,
-}: DialogModalProps) {
+}: DialogModalProps): JSX.Element {
   return (
     <dialog
       ref={dialogRef}
-      className={styles.dialog}
+      className={styles.dialog} // Remember to define styles
       onClick={(e) => onClose(e)}
     >
       {children}
