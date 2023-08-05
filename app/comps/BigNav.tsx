@@ -86,6 +86,7 @@ export default function BigNav() {
           </Card>
         }
       >
+      <div className={styles.modalContantHold}>
         <h2> Do want to Logout? </h2>
         <div className={styles.askHold}>
           <div
@@ -104,6 +105,7 @@ export default function BigNav() {
             No
           </div>
         </div>
+      </div>
       </DialogModalWrapper>
 
       <div className={styles.noticeBoard}>

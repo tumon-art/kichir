@@ -5,6 +5,10 @@
   min-height: 50vh;
 }
 
+.modalContantHold {
+  padding: 2em 2em;
+}
+
 .dialog {
   border: none;
   border-radius: 10px;
