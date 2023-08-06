@@ -70,6 +70,8 @@ export default function BigNav() {
       <button className={styles.kichirBtn}>Kichir</button>
       <DialogModalWrapper
         modalRef={modalRef}
+        defaultTrigger={false}
+        customTrigger={() => modalRef.current?.showModal()}
         preDialogContent={
           <Card py07em>
             <div className={styles.profileHold}>
@@ -86,26 +88,26 @@ export default function BigNav() {
           </Card>
         }
       >
-      <div className={styles.modalContantHold}>
-        <h2> Do want to Logout? </h2>
-        <div className={styles.askHold}>
-          <div
-            onClick={() => {
-              signOut();
-              modalRef.current?.close();
-            }}
-          >
-            Yes
-          </div>
-          <div
-            onClick={() => {
-              modalRef.current?.close();
-            }}
-          >
-            No
+        <div className={styles.modalContantHold}>
+          <h2> Do want to Logout? </h2>
+          <div className={styles.askHold}>
+            <div
+              onClick={() => {
+                signOut();
+                modalRef.current?.close();
+              }}
+            >
+              Yes
+            </div>
+            <div
+              onClick={() => {
+                modalRef.current?.close();
+              }}
+            >
+              No
+            </div>
           </div>
         </div>
-      </div>
       </DialogModalWrapper>
 
       <div className={styles.noticeBoard}>

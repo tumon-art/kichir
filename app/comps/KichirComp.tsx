@@ -1,7 +1,6 @@
 import styles from "./KichirComp.module.css";
 import ImageModal from "./dls/ImageModal";
 import { toast } from "react-hot-toast";
-import Modal from "./dls/Modal";
 import { CommentIcon, Ellipsis, Love, View, XMark } from "./Icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +14,7 @@ import ShowComments from "./ShowComments";
 import randomInt from "@/lib/tools/randomInt";
 import defaultImg from "@/lib/tools/deaultImg";
 import DialogModal from "./dls/DialogModal";
+import { DialogModalWrapper } from "./dls/DialogModalWrapper";
 
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   console.log("Kichir Comp");
@@ -50,7 +50,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   return (
     <>
       <Container key={kichir.id} px1em>
-        <DialogModal dialogRef={dialogRef}>
+      {/* <DialogModal dialogRef={dialogRef}>
           <h2> Wanna Delete This Kichir? </h2>
           <div className={styles.askHold}>
             <div
@@ -84,7 +84,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
               No
             </div>
           </div>
-        </DialogModal>
+        </DialogModal> */}
         <div className={styles.card}>
           <div className={styles.cardSect2}>
             {/* --- CARD TOP HEAD */}
@@ -110,7 +110,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
                   </span>
                 </span>
               </div>
-              <span
+              {/* <span
                 className={styles.ellipsisIconHold}
                 onClick={() => {
                   if (session?.user?.id === kichir.authorId)
@@ -118,7 +118,62 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
                 }}
               >
                 <Ellipsis />
-              </span>
+              </span> */}
+              <DialogModalWrapper modalRef={dialogRef} defaultTrigger={false}
+                customTrigger={() => {
+                  if (session?.user?.id === kichir.authorId)
+                    dialogRef.current?.showModal();
+                }
+                }
+                preDialogContent={
+                  <span
+                    className={styles.ellipsisIconHold}
+                    onClick={() => {
+                      if (session?.user?.id === kichir.authorId)
+                        dialogRef.current?.showModal();
+                    }}
+                  >
+                    <Ellipsis />
+                  </span>
+
+                }>
+        <div className={styles.modalContantHold}>
+          <h2> Wanna Delete This Kichir? </h2>
+          <div className={styles.askHold}>
+            <div
+              onClick={async () => {
+                async function deleteKichir() {
+                  return fetch(`/api/deletekichir?id=${kichir?.id}`, {
+                    method: "DELETE",
+                  })
+                    .then((response) => {
+                      if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                      }
+                      toast("Kichir deleted successfully");
+                      return response.json();
+                    })
+                    .catch((error) => {
+                      console.error("Error deleting Kichir:", error);
+                    });
+                }
+                deleteKichir();
+                dialogRef.current?.close();
+              }}
+            >
+              Yes
+            </div>
+            <div
+              onClick={() => {
+                dialogRef.current?.close();
+              }}
+            >
+              No
+            </div>
+          </div>
+      </div>
+
+              </DialogModalWrapper>
             </div>
 
             {/* --- CARD BODY TEXT */}
@@ -155,9 +210,8 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
                 }}
               >
                 <Love
-                  cssStyles={`${styles.loveIcon} ${
-                    isLiked && styles.loveFilled
-                  }`}
+                  cssStyles={`${styles.loveIcon} ${isLiked && styles.loveFilled
+                    }`}
                 />
                 <span> {kichir.loves.length}</span>
               </div>
