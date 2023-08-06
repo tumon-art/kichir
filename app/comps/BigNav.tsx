@@ -20,7 +20,7 @@ import { DialogModalWrapper } from "./dls/DialogModalWrapper";
 export default function BigNav() {
   const { data: session } = useSession();
 
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const modalRef = useRef<HTMLDialogElement>(null);
   return (
     <aside className={styles.main}>
       <Card py07em>
@@ -69,7 +69,7 @@ export default function BigNav() {
 
       <button className={styles.kichirBtn}>Kichir</button>
       <DialogModalWrapper
-        dialogRef={dialogRef}
+        modalRef={modalRef}
         preDialogContent={
           <Card py07em>
             <div className={styles.profileHold}>
@@ -92,14 +92,14 @@ export default function BigNav() {
           <div
             onClick={() => {
               signOut();
-              dialogRef.current?.close();
+              modalRef.current?.close();
             }}
           >
             Yes
           </div>
           <div
             onClick={() => {
-              dialogRef.current?.close();
+              modalRef.current?.close();
             }}
           >
             No

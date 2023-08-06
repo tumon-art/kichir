@@ -1,8 +1,9 @@
 import styles from "./DialogModalNew.module.css"
+
 interface DialogModalProps {
   onClose: (e: React.MouseEvent<HTMLDialogElement, MouseEvent>) => void;
   children: React.ReactNode;
-  dialogRef: React.RefObject<HTMLDialogElement>;
+  modalRef: React.RefObject<HTMLDialogElement>;
 }
 
 /**
@@ -13,12 +14,12 @@ interface DialogModalProps {
  */
 export function DialogModalNew({
   onClose,
-  dialogRef,
+  modalRef,
   children,
 }: DialogModalProps): JSX.Element {
   return (
     <dialog
-      ref={dialogRef}
+      ref={modalRef}
       className={styles.dialog} // Remember to define styles
       onClick={(e) => onClose(e)}
     >
