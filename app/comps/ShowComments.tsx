@@ -92,10 +92,9 @@ export default function ShowComments({
           <h2> Wanna Delete This Kichir? </h2>
           <div className={styles.askHold}>
             <div
-              onClick={async () => {
+              onClick={ () => {
                 setSelectedElement(undefined);
-                function deleteKichir() {
-                  return fetch(`/api/deletecomment?id=${selectedElement?.id}`, {
+                fetch(`/api/deletecomment?id=${selectedElement?.id}`, {
                     method: "DELETE",
                   })
                     .then((response) => {
@@ -109,8 +108,7 @@ export default function ShowComments({
                     .catch((error) => {
                       console.error("Error deleting Comment:", error);
                     });
-                }
-                deleteKichir();
+
               }}
             >
               Yes
