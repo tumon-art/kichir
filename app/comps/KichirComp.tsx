@@ -13,7 +13,6 @@ import Comment from "./Comment";
 import ShowComments from "./ShowComments";
 import randomInt from "@/lib/tools/randomInt";
 import defaultImg from "@/lib/tools/deaultImg";
-import DialogModal from "./dls/DialogModal";
 import { DialogModalWrapper } from "./dls/DialogModalWrapper";
 
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
@@ -50,7 +49,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
   return (
     <>
       <Container key={kichir.id} px1em>
-      {/* <DialogModal dialogRef={dialogRef}>
+        {/* <DialogModal dialogRef={dialogRef}>
           <h2> Wanna Delete This Kichir? </h2>
           <div className={styles.askHold}>
             <div
@@ -137,41 +136,41 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
                   </span>
 
                 }>
-        <div className={styles.modalContantHold}>
-          <h2> Wanna Delete This Kichir? </h2>
-          <div className={styles.askHold}>
-            <div
-              onClick={async () => {
-                async function deleteKichir() {
-                  return fetch(`/api/deletekichir?id=${kichir?.id}`, {
-                    method: "DELETE",
-                  })
-                    .then((response) => {
-                      if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                      }
-                      toast("Kichir deleted successfully");
-                      return response.json();
-                    })
-                    .catch((error) => {
-                      console.error("Error deleting Kichir:", error);
-                    });
-                }
-                deleteKichir();
-                dialogRef.current?.close();
-              }}
-            >
-              Yes
-            </div>
-            <div
-              onClick={() => {
-                dialogRef.current?.close();
-              }}
-            >
-              No
-            </div>
-          </div>
-      </div>
+                <div className={styles.modalContantHold}>
+                  <h2> Wanna Delete This Kichir? </h2>
+                  <div className={styles.askHold}>
+                    <div
+                      onClick={async () => {
+                        async function deleteKichir() {
+                          return fetch(`/api/deletekichir?id=${kichir?.id}`, {
+                            method: "DELETE",
+                          })
+                            .then((response) => {
+                              if (!response.ok) {
+                                throw new Error("Network response was not ok");
+                              }
+                              toast("Kichir deleted successfully");
+                              return response.json();
+                            })
+                            .catch((error) => {
+                              console.error("Error deleting Kichir:", error);
+                            });
+                        }
+                        deleteKichir();
+                        dialogRef.current?.close();
+                      }}
+                    >
+                      Yes
+                    </div>
+                    <div
+                      onClick={() => {
+                        dialogRef.current?.close();
+                      }}
+                    >
+                      No
+                    </div>
+                  </div>
+                </div>
 
               </DialogModalWrapper>
             </div>

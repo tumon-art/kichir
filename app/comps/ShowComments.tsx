@@ -2,7 +2,7 @@ import { Comment } from "@prisma/client";
 import { fetcherGET } from "./ShowKichirs";
 import useSWR, { mutate } from "swr";
 import styles from "./ShowComments.module.css";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { Ellipsis } from "./Icons";
 import Image from "next/image";
 import defaultImg from "@/lib/tools/deaultImg";
@@ -92,22 +92,22 @@ export default function ShowComments({
           <h2> Wanna Delete This Kichir? </h2>
           <div className={styles.askHold}>
             <div
-              onClick={ () => {
+              onClick={() => {
                 setSelectedElement(undefined);
                 fetch(`/api/deletecomment?id=${selectedElement?.id}`, {
-                    method: "DELETE",
+                  method: "DELETE",
+                })
+                  .then((response) => {
+                    if (!response.ok) {
+                      throw new Error("Network response was not ok");
+                    }
+                    mutate(`/api/getcomment?id=${kichirId}`);
+                    toast("Comment deleted successfully");
+                    return response.json();
                   })
-                    .then((response) => {
-                      if (!response.ok) {
-                        throw new Error("Network response was not ok");
-                      }
-                      mutate(`/api/getcomment?id=${kichirId}`);
-                      toast("Comment deleted successfully");
-                      return response.json();
-                    })
-                    .catch((error) => {
-                      console.error("Error deleting Comment:", error);
-                    });
+                  .catch((error) => {
+                    console.error("Error deleting Comment:", error);
+                  });
 
               }}
             >
