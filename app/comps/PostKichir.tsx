@@ -11,6 +11,7 @@ import { useSWRConfig } from "swr";
 import { toast } from "react-hot-toast";
 import Spinner from "./dls/Spinner";
 import defaultImg from "@/lib/tools/deaultImg";
+import { Textarea } from "@nextui-org/react";
 
 export default function PostKichir() {
   const { data: session } = useSession();
@@ -151,7 +152,16 @@ export default function PostKichir() {
         <div className={styles.sect2}>
           {/* --- FORM  */}
           <form onSubmit={handleOnSubmit} className={styles.form}>
-            <textarea
+            <Textarea
+              className="bg-transparent"
+              ref={refTextArea}
+              maxLength={200}
+              placeholder={`What's going on?`}
+              value={String(text)}
+              onChange={(e) => setText(e.target.value)}
+              required
+            />
+            {/* <textarea
               ref={refTextArea}
               maxLength={200}
               className={styles.textArea}
@@ -159,7 +169,8 @@ export default function PostKichir() {
               value={String(text)}
               onChange={(e) => setText(e.target.value)}
               required
-            ></textarea>
+            ></textarea> */}
+
             {imageSrc && (
               <div className={styles.previewContainer}>
                 {/* --- X button for Preveiw */}

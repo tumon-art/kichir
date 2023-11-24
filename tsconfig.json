@@ -31,7 +31,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/provider.jsx",
-    "/home/tumon/dev/kichir/.next/types/**/*.ts"
+    "/home/tumon/dev/kichir/.next/types/**/*.ts",
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }
