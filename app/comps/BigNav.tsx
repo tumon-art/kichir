@@ -16,6 +16,7 @@ import Link from "next/link";
 import defaultImg from "@/lib/tools/deaultImg";
 import { useRef } from "react";
 import { DialogModalWrapper } from "./dls/DialogModalWrapper";
+import { Button } from "@nextui-org/react";
 
 export default function BigNav() {
   const { data: session } = useSession();
@@ -73,19 +74,23 @@ export default function BigNav() {
         defaultTrigger={false}
         customTrigger={() => modalRef.current?.showModal()}
         preDialogContent={
-          <Card py07em>
-            <div className={styles.profileHold}>
-              <Image
-                src={String(session?.user?.image || defaultImg)}
-                alt="img"
-                width="40"
-                height="40"
-                className={styles.img}
-              />
+          session ? (
+            <Card py07em>
+              <div className={styles.profileHold}>
+                <Image
+                  src={String(session?.user?.image || defaultImg)}
+                  alt="img"
+                  width="40"
+                  height="40"
+                  className={styles.img}
+                />
 
-              <span> {session?.user?.name} </span>
-            </div>
-          </Card>
+                <span> {session?.user?.name} </span>
+              </div>
+            </Card>
+          ) : (
+            <Button fullWidth variant="solid" className="bg-primary" radius="full"> Sign up </Button>
+          )
         }
       >
         <div className={styles.modalContantHold}>
@@ -118,7 +123,7 @@ export default function BigNav() {
           <br></br>
           <div className={styles.pFooter}>
             <Telegram cssStyles={styles.tgSVG} />
-            <a className={styles.a} href="https://t.me/tumon_001">
+            <a className={styles.a} href="https://t.me/tumon001">
               t.me/tumon_001
             </a>
           </div>

@@ -12,6 +12,7 @@ import { toast } from "react-hot-toast";
 import Spinner from "./dls/Spinner";
 import defaultImg from "@/lib/tools/deaultImg";
 import { Textarea } from "@nextui-org/react";
+import useAutosizeTextArea from "./hooks/useAutoSizeTextArea";
 
 export default function PostKichir() {
   const { data: session } = useSession();
@@ -29,6 +30,8 @@ export default function PostKichir() {
   // Refs for Text Area & Emoji Component
   const refTextArea = useRef<HTMLTextAreaElement>(null);
   const refEmojiComp = useRef<HTMLDivElement>(null);
+
+  useAutosizeTextArea(refTextArea.current, text);
 
   /**
    * handleOnImgChange
@@ -152,16 +155,7 @@ export default function PostKichir() {
         <div className={styles.sect2}>
           {/* --- FORM  */}
           <form onSubmit={handleOnSubmit} className={styles.form}>
-            <Textarea
-              className="bg-transparent"
-              ref={refTextArea}
-              maxLength={200}
-              placeholder={`What's going on?`}
-              value={String(text)}
-              onChange={(e) => setText(e.target.value)}
-              required
-            />
-            {/* <textarea
+            <textarea
               ref={refTextArea}
               maxLength={200}
               className={styles.textArea}
@@ -169,7 +163,8 @@ export default function PostKichir() {
               value={String(text)}
               onChange={(e) => setText(e.target.value)}
               required
-            ></textarea> */}
+              rows={1}
+            ></textarea>
 
             {imageSrc && (
               <div className={styles.previewContainer}>
@@ -198,7 +193,7 @@ export default function PostKichir() {
 
                 {/* --- Image Upload */}
                 <label htmlFor="imageUpload">
-                  <div>
+                  <div className="flex items-center">
                     <Photo cssStyles={styles.photoImage} />
                     <input
                       className={styles.imgUploader}

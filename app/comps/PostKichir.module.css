@@ -33,20 +33,30 @@
 
 .textArea {
   width: 100%;
-  height: auto;
+  min-height: 40px;
   resize: none;
-  min-height: 80px;
-  max-height: 200px;
   outline: none;
-  display: block;
   color: var(--text-primary);
   background: none;
   font-size: 1rem;
   border: none;
   font-family: inherit;
-  transition: var(--transition-fast);
+  transition: border-color 150ms ease;
 }
 
+
+/*  textarea { */
+/*   background: #ffffff; */
+/*   border-radius: 0; */
+/*   border: none; */
+/*   border-bottom: 1px solid #ededed; */
+/*   font-size: 14px; */
+/*   line-height: 1.5; */
+/*   padding: 8px 0; */
+/*   resize: none; */
+/*   transition: border-color 150ms ease; */
+/*   width: 100%; */
+/* } */
 .textArea:valid ~ .footerHold button {
   opacity: 100%;
 }
