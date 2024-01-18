@@ -11,7 +11,6 @@ import { useSWRConfig } from "swr";
 import { toast } from "react-hot-toast";
 import Spinner from "./dls/Spinner";
 import defaultImg from "@/lib/tools/deaultImg";
-import { Textarea } from "@nextui-org/react";
 import useAutosizeTextArea from "./hooks/useAutoSizeTextArea";
 
 export default function PostKichir() {

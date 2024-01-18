@@ -17,7 +17,7 @@ export default function ToFollow({ users }: { users: User[] }) {
 
   const { data, isLoading, mutate } = useSWR<User[]>(
     `/api/getfollowing`,
-    (url) =>
+    (url: any) =>
       fetch(url)
         .then((r) => r.json())
         .catch((err) => err)

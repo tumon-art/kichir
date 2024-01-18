@@ -16,7 +16,6 @@ import Link from "next/link";
 import defaultImg from "@/lib/tools/deaultImg";
 import { useRef } from "react";
 import { DialogModalWrapper } from "./dls/DialogModalWrapper";
-import { Button } from "@nextui-org/react";
 
 export default function BigNav() {
   const { data: session } = useSession();
@@ -89,7 +88,7 @@ export default function BigNav() {
               </div>
             </Card>
           ) : (
-            <Button fullWidth variant="solid" className="bg-primary" radius="full"> Sign up </Button>
+            <button className="bg-primary"> Sign up </button>
           )
         }
       >
@@ -124,7 +123,7 @@ export default function BigNav() {
           <div className={styles.pFooter}>
             <Telegram cssStyles={styles.tgSVG} />
             <a className={styles.a} href="https://t.me/tumon001">
-              t.me/tumon_001
+              t.me/AlphaTumon
             </a>
           </div>
         </div>
