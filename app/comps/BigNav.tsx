@@ -71,7 +71,7 @@ export default function BigNav() {
       <DialogModalWrapper
         modalRef={modalRef}
         defaultTrigger={false}
-        customTrigger={() => modalRef.current?.showModal()}
+        customTrigger={() => session ? modalRef.current?.showModal() : null}
         preDialogContent={
           session ? (
             <Card py07em>
@@ -88,7 +88,9 @@ export default function BigNav() {
               </div>
             </Card>
           ) : (
-            <button className="bg-primary"> Sign up </button>
+            <Link href="/login">
+              <button className={styles.kichirBtn}> Sign up </button>
+            </Link>
           )
         }
       >
@@ -122,7 +124,7 @@ export default function BigNav() {
           <br></br>
           <div className={styles.pFooter}>
             <Telegram cssStyles={styles.tgSVG} />
-            <a className={styles.a} href="https://t.me/tumon001">
+            <a className={styles.a} href="https://t.me/AlphaTumon">
               t.me/AlphaTumon
             </a>
           </div>
