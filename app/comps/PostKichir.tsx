@@ -139,6 +139,7 @@ export default function PostKichir() {
     setShowEmoji(false);
   });
 
+  if (!session) return null
   return (
     <Container>
       <div id="writeKichir" className={styles.main}>

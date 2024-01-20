@@ -245,7 +245,7 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
         )}
       </Container>
       {/* COMMENT COMPONENT */}
-      <Comment kichirId={kichir.id} session={session} defaultImg={defaultImg} />
+      {session && <Comment kichirId={kichir.id} session={session} defaultImg={defaultImg} />}
 
       {/* SHOW ALL COMMENTS */}
       <ShowComments session={session} kichirId={kichir.id} />

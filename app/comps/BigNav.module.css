@@ -5,6 +5,10 @@
   min-height: 50vh;
 }
 
+.signupBTn {
+  outline: 2px dashed var(--primary);
+  outline-offset: 4px;
+}
 .modalContantHold {
   padding: 2em 2em;
 }

@@ -89,7 +89,7 @@ export default function BigNav() {
             </Card>
           ) : (
             <Link href="/login">
-              <button className={styles.kichirBtn}> Sign up </button>
+              <button className={`${styles.kichirBtn} ${styles.signupBTn}`}> Sign up </button>
             </Link>
           )
         }
