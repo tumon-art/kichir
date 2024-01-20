@@ -101,8 +101,10 @@ const KichirComp = ({
   const [selectedElement, setSelectedElement] = useState<AllKichris>();
   const [imageModal, setImageModal] = useState<string>();
   const [isLiked, setisLiked] = useState<boolean>();
+  const [loginModal, setLoginModal] = useState(false)
 
   useEffect(() => {
+    if (!session) return
     // An HACK for showing loved Posts. (Not Ideal!)
     kichir.loves.forEach(
       (e) => e.userId === session?.user?.id && setisLiked(true)
@@ -198,6 +200,11 @@ const KichirComp = ({
             <div
               className={styles.iconHold}
               onClick={() => {
+
+                if (!session) {
+                  setLoginModal(true)
+                  return
+                }
                 handleLove(kichir.id, String(session?.user?.id));
                 if (isLiked) kichir.loves.pop();
                 else
@@ -293,6 +300,27 @@ const KichirComp = ({
             className={styles.imageModal}
           />
         </ImageModal>
+      )}
+
+      {/* --- LOGIN MODA */}
+      {loginModal && (
+        <Modal cssStyles={styles.customModal} setModel={setSelectedElement}>
+          <h2> Wanna Login? </h2>
+          <div className={styles.askHold}>
+            <Link href="/login">
+              Yes
+            </Link>
+
+            <div
+              onClick={() => {
+                setLoginModal(false)
+              }}
+            >
+              No
+            </div>
+          </div>
+        </Modal>
+
       )}
     </Container>
   );
