@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 3s;
+}
+
+.SVG {
+  width: 25px;
+  color: var(--primary);
+  stroke-width: 2;
+}

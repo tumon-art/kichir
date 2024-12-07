@@ -94,7 +94,7 @@ const KichirComp = ({
   allKichir,
 }: {
   kichir: AllKichris;
-  mutateKichir: KeyedMutator<AllKichris[]>;
+  mutateKichir: any;
   allKichir: AllKichris[];
 }) => {
   const { data: session } = useSession();
@@ -244,10 +244,10 @@ const KichirComp = ({
               onClick={async () => {
                 setSelectedElement(undefined);
                 mutateKichir(deleteKichir, {
-                  optimisticData: (crnt) =>
+                  optimisticData: (crnt: any) =>
                     crnt!
                       .flat()
-                      .filter((kichir) => kichir?.id !== selectedElement.id),
+                      .filter((kichir: any) => kichir?.id !== selectedElement.id),
                   populateCache: () =>
                     allKichir
                       .flat()

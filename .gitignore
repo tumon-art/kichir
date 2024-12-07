@@ -5,12 +5,6 @@
 /.pnp
 .pnp.js
 
-# git 
-/pages/
-/prisma/
-/app/comps/hooks
-/app/comps/dls
-/lib
 
 # testing
 /coverage

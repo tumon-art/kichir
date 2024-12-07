@@ -1,0 +1,28 @@
+.main {
+  width: 100%;
+  max-width: 500px;
+}
+
+.px1em {
+  padding: 0 1em;
+}
+
+.mt3em {
+  margin: 3em 0 0 0;
+}
+
+.bX1px {
+  border: 1px var(--primary);
+  border-left-style: dotted;
+  border-right-style: dotted;
+}
+
+.bB1px {
+  border-bottom: 1px dotted var(--primary);
+}
+
+@media (max-width: 700px) {
+  .bX1px {
+    border: none;
+  }
+}
