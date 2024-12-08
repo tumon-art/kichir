@@ -106,7 +106,7 @@ export default function ShowComments({
                     return response.json();
                   })
                   .catch((error) => {
-                    console.error("Error deleting Comment:", error);
+                    console.log("Error deleting Comment:", error);
                   });
 
               }}

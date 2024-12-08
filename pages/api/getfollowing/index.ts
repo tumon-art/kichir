@@ -1,13 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prismaClient from "../../../lib/prisma";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]";
-
+import { auth } from "@/auth"
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
- const session = await getServerSession(req, res, authOptions)
-
+  const session = await auth(req, res)
+  console.log(session?.user)
   if (session) {
     try {
       const user = await prismaClient.user.findUnique({
@@ -21,9 +19,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
       });
 
+
+      console.log(user, 'user')
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
+
 
       const following = user.following.map(({ following }) => following);
 

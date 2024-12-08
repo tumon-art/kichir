@@ -16,6 +16,7 @@ import Link from "next/link";
 import randomInt from "@/lib/tools/randomInt";
 import defaultImg from "@/lib/tools/deaultImg";
 import useSWRInfinite from "swr/infinite";
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
 export interface AllKichris extends Kichir {
   loves: loves[];
@@ -97,7 +98,7 @@ const KichirComp = ({
   mutateKichir: any;
   allKichir: AllKichris[];
 }) => {
-  const { data: session } = useSession();
+  const session = useSession();
   const [selectedElement, setSelectedElement] = useState<AllKichris>();
   const [imageModal, setImageModal] = useState<string>();
   const [isLiked, setisLiked] = useState<boolean>();
@@ -107,7 +108,7 @@ const KichirComp = ({
     if (!session) return
     // An HACK for showing loved Posts. (Not Ideal!)
     kichir.loves.forEach(
-      (e) => e.userId === session?.user?.id && setisLiked(true)
+      (e) => e.userId === session?.data?.user?.id && setisLiked(true)
     );
   }, []);
 
@@ -169,7 +170,7 @@ const KichirComp = ({
             <span
               className={styles.ellipsisIconHold}
               onClick={() => {
-                if (session?.user?.id === kichir.authorId)
+                if (session?.data?.user?.id === kichir.authorId)
                   setSelectedElement(kichir);
               }}
             >
@@ -205,7 +206,7 @@ const KichirComp = ({
                   setLoginModal(true)
                   return
                 }
-                handleLove(kichir.id, String(session?.user?.id));
+                handleLove(kichir.id, String(session?.data?.user?.id));
                 if (isLiked) kichir.loves.pop();
                 else
                   kichir.loves.push({

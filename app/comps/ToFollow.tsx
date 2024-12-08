@@ -15,6 +15,7 @@ export default function ToFollow({ users }: { users: User[] }) {
   const { data: session } = useSession();
   const [selectedElement, setselectedElement] = useState<User>();
 
+  return null
   const { data, isLoading, mutate } = useSWR<User[]>(
     `/api/getfollowing`,
     (url: any) =>
@@ -34,6 +35,7 @@ export default function ToFollow({ users }: { users: User[] }) {
         </div>
       </Container>
     );
+
 
   if (!data) <div> </div>;
 
