@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export default function useOnOutSideClick<T extends Element | null>(
-  ref: React.RefObject<T>,
+  ref: React.RefObject<T | null>,
   callback: () => void
 ) {
   useEffect(() => {

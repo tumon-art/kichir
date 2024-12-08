@@ -2,7 +2,7 @@ const DialogModal = ({
   dialogRef,
   children,
 }: {
-  dialogRef: React.RefObject<HTMLDialogElement>;
+  dialogRef: React.RefObject<HTMLDialogElement | null>;
   children: React.ReactNode;
 }) => {
   console.log("Dialog Modal");

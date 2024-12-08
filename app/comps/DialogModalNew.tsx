@@ -1,9 +1,11 @@
 import styles from "./DialogModalNew.module.css"
 
+import type { JSX } from "react";
+
 interface DialogModalProps {
   onClose: (e: React.MouseEvent<HTMLDialogElement, MouseEvent>) => void;
   children: React.ReactNode;
-  modalRef: React.RefObject<HTMLDialogElement>;
+  modalRef: React.RefObject<HTMLDialogElement | null>;
 }
 
 /**

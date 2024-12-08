@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, type JSX } from "react";
 import { DialogModalNew } from "../DialogModalNew";
 
 interface DialogModalWrapperProps {
   preDialogContent: React.ReactNode;
   children: React.ReactNode;
-  modalRef: React.RefObject<HTMLDialogElement>;
+  modalRef: React.RefObject<HTMLDialogElement | null>;
   defaultTrigger: boolean;
   customTrigger?: () => void;
 }

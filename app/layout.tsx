@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Kichir",
-  description: "Micor-Bloging site",
+  description: "Micor-Bloging site"
 };
 
 async function getData() {
