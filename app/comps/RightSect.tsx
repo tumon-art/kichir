@@ -25,7 +25,7 @@ export default function RightSect({
       <div className={styles.toFollowHold}>
         <Container mt3em>
           <HeaderH2 big>Who to follow</HeaderH2>
-          {/* <ToFollow users={users} /> */}
+          <ToFollow users={users} />
         </Container>
       </div>
       <Footer />

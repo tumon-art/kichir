@@ -1,18 +1,15 @@
 import prismaClient from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
-interface ExtendedReq extends NextApiRequest {
-  body: {
-    followerId: string;
-    followingId: string;
-  };
-}
-
-const handlerFollow = async (req: ExtendedReq, res: NextApiResponse) => {
-  const { followerId, followingId } = req.body;
-if(req.method == 'POST') {
-
+export async function POST(req: NextRequest) {
   try {
+    const body = await req.json();
+    const { followerId, followingId } = body;
+
+    if (!followerId || !followingId) {
+      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
+    }
+
     // Check if the follower and following users exist
     const [follower, following] = await Promise.all([
       prismaClient.user.findUnique({ where: { id: followerId } }),
@@ -20,8 +17,7 @@ if(req.method == 'POST') {
     ]);
 
     if (!follower || !following) {
-      res.status(404).json({ message: "User not found" });
-      return;
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
     }
 
     // Check if the follow relationship already exists
@@ -35,12 +31,10 @@ if(req.method == 'POST') {
     });
 
     if (existingFollow) {
-      // If the follow relationship already exists, return an error
-      res.status(400).json({ message: "Already following this User" });
-      return;
+      return NextResponse.json({ message: "Already following this user" }, { status: 400 });
     }
 
-    // ADD NEW FOLLOWER
+    // Add new follower
     const newFollower = await prismaClient.follows.create({
       data: {
         follower: {
@@ -56,14 +50,15 @@ if(req.method == 'POST') {
       },
     });
 
-    res.status(201).json(newFollower);
+    return NextResponse.json(newFollower, { status: 201 });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Internal server error" });
+    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
   } finally {
     await prismaClient.$disconnect();
   }
-} else res.status(500).json({ message: "Invalid Method" });
-};
+}
 
-export default handlerFollow;
+export async function OPTIONS() {
+  return NextResponse.json({ message: "OK" }, { status: 200 }); // Preflight handling for CORS
+}
