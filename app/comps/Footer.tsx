@@ -10,7 +10,7 @@ const textarr = [
   "Ads info",
   "More...",
 ];
-export default function Footer({justifyCenter}: {justifyCenter?: boolean}) {
+export default function Footer({ justifyCenter }: { justifyCenter?: boolean }) {
   return (
     <main className={styles.main}>
       <Container px1em mt3em>
@@ -22,7 +22,7 @@ export default function Footer({justifyCenter}: {justifyCenter?: boolean}) {
               </span>
             ))}
           </div>
-          <span className={styles.span2}> © 2023 Kichir, Inc. </span>
+          <span className={styles.span2}> &copy; {new Date().getFullYear()} Kichir, Inc. </span>
         </div>
       </Container>
     </main>

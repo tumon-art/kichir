@@ -16,7 +16,6 @@ import defaultImg from "@/lib/tools/deaultImg";
 import { DialogModalWrapper } from "./dls/DialogModalWrapper";
 
 export default function KichirComp({ kichir }: { kichir: AllKichris }) {
-  console.log("Kichir Comp");
   const { data: session } = useSession();
   const [imageModal, setImageModal] = useState<string>();
   const [isLiked, setisLiked] = useState<boolean>();
