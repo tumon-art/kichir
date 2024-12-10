@@ -88,16 +88,20 @@ export default function KichirComp({ kichir }: { kichir: AllKichris }) {
             {/* --- CARD TOP HEAD */}
             <div className={styles.cardTop}>
               <div className={styles.cardTopSect1}>
+
                 <div className={styles.imgHoldMobile}>
-                  <Image
-                    src={kichir.author.image || defaultImg}
-                    alt="author"
-                    height={40}
-                    width={40}
-                    className={styles.authorImg}
-                  />
+                  <Link href={`user/${kichir.author.uname}`}>
+                    <Image
+                      src={kichir.author.image || defaultImg}
+                      alt="author"
+                      height={40}
+                      width={40}
+                      className={styles.authorImg}
+                    />
+
+                  </Link>
                 </div>
-                <Link href={`kichir/name`}>
+                <Link href={`user/${kichir.author.uname}`}>
                   <span className={styles.name}> {kichir.author.name} </span>
                 </Link>
                 <span className={styles.uname}> @{kichir.author.uname} </span>
