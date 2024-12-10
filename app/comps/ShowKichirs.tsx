@@ -135,13 +135,15 @@ const KichirComp = ({
     <Container key={kichir.id} px1em>
       <div className={styles.card}>
         <div className={styles.imgHold}>
-          <Image
-            src={kichir.author.image || defaultImg}
-            alt="author"
-            height={40}
-            width={40}
-            className={styles.authorImg}
-          />
+          <Link href={`user/${kichir.author.uname}`}>
+            <Image
+              src={kichir.author.image || defaultImg}
+              alt="author"
+              height={40}
+              width={40}
+              className={styles.authorImg}
+            />
+          </Link>
         </div>
         <div className={styles.cardSect2}>
           {/* --- CARD TOP HEAD */}
